@@ -33,4 +33,60 @@ public class Sendung {
         this.lieferZeitpunkt = lieferZeitpunkt;
     }
 
+    // Getter und Setter
+    public Integer getSendungNummer() {
+        return sendungNummer;
+    }
+
+    public void setSendungNummer(Integer sendungNummer) {
+        this.sendungNummer = sendungNummer;
+    }
+
+    public boolean isStandard() {
+        return standard;
+    }
+
+    public void setStandard(boolean standard) {
+        this.standard = standard;
+    }
+
+    public Adresse getLieferAdresse() {
+        return lieferAdresse;
+    }
+
+    public void setLieferAdresse(Adresse lieferAdresse) {
+        this.lieferAdresse = lieferAdresse;
+    }
+
+    public Adresse getStartAdresse() {
+        return startAdresse;
+    }
+
+    public void setStartAdresse(Adresse startAdresse) {
+        this.startAdresse = startAdresse;
+    }
+
+    public Lieferstatus getLieferstatus() {
+        return lieferstatus;
+    }
+
+    public void setLieferstatus(Lieferstatus lieferstatus) {
+        this.lieferstatus = lieferstatus;
+    }
+
+    public LocalDateTime getAbgabeZeitpunkt() {
+        return abgabeZeitpunkt;
+    }
+
+    public void setAbgabeZeitpunkt(LocalDateTime abgabeZeitpunkt) {
+        this.abgabeZeitpunkt = abgabeZeitpunkt;
+    }
+
+    public LocalDateTime getLieferZeitpunkt() {
+        return lieferZeitpunkt;
+    }
+
+    public void setLieferZeitpunkt(LocalDateTime lieferZeitpunkt) {
+        this.lieferZeitpunkt = lieferZeitpunkt;
+    }
 }
