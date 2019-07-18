@@ -9,14 +9,16 @@ import java.util.*;
  */
 public class Controller {
 
+    // Attribute
+    private Integer gesuchteSendung;
 
+
+    // Konstruktor
     public Controller() {
     }
 
 
-    private int gesuchteSendung;;
-
-
+    // Methoden
     public void fuegeSendungHinzu() {
         // TODO implement here
     }
