@@ -12,6 +12,7 @@ public class SendungsListe {
 
     private List<Sendung> sendungsliste;
 
+
     public SendungsListe() {
         this.sendungsliste = erstelleSendungsListe();
     }
@@ -40,6 +41,12 @@ public class SendungsListe {
 
     }
 
+    // Getter und Setter
+    public List<Sendung> getSendungsliste() {
+        return sendungsliste;
+    }
 
-
+    public void setSendungsliste(List<Sendung> sendungsliste) {
+        this.sendungsliste = sendungsliste;
+    }
 }
