@@ -43,13 +43,15 @@ SendungsListe sendungsHashMap = new SendungsListe();
         System.out.println("Bitte gebe eine Sendungsnummer ein");
         Integer sendungsnummer = scanner.nextInt();
 
-        if(sendungsHashMap.getSendungslisteMap().containsKey(sendungsnummer)){
+        do {
+            System.out.println("Bitte gebe eine korrekte Sendungsnummer ein");
+            sendungsnummer = scanner.nextInt();
+        } while (!sendungsHashMap.getSendungslisteMap().containsKey(sendungsnummer));
+
+        if (sendungsHashMap.getSendungslisteMap().containsKey(sendungsnummer)) {
             System.out.println(sendungsHashMap.getSendungslisteMap().get(sendungsnummer).getLieferstatusEnum());
 
         }
-
-
-
     }
 
 
