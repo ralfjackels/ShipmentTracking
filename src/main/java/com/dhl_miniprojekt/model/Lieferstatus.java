@@ -20,5 +20,4 @@ public enum Lieferstatus {
         this.lieferstatus = lieferstatus;
     }
 
-
 }
