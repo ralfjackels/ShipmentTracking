@@ -2,13 +2,13 @@ package com.dhl_miniprojekt.model;
 /**
  * 
  */
-public enum Lieferstatus {
+public enum LieferstatusEnum {
 
     AUFGEGEBEN("Aufgegeben"), ZUGESTELLT("Zugestellt"), IN_ZUSTELLUNG("In Zustellung");
 
     private String lieferstatus;
 
-    Lieferstatus(String lieferstatus) {
+    LieferstatusEnum(String lieferstatus) {
         this.lieferstatus = lieferstatus;
     }
 
