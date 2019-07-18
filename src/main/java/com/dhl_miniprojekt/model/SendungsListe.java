@@ -10,14 +10,14 @@ import java.util.*;
  */
 public class SendungsListe {
 
-    private List<Sendung> sendungsliste;
-
+//    private List<Sendung> sendungsliste;
+    private HashMap <Integer, Sendung> sendungslisteMap = new HashMap<>();
 
     public SendungsListe() {
-        this.sendungsliste = erstelleSendungsListe();
+        this.sendungslisteMap = erstelleSendungsListe();
     }
 
-    public List erstelleSendungsListe() {
+    public HashMap erstelleSendungsListe() {
 
         Adresse adresse1 = new Adresse("Hansstraße", "25", "Köln", 50969, "Deutschland", "Ralf Jaeckels");
         Adresse adresse2 = new Adresse("Bonzenstr.", "60", "Hamburg", 20257, "Deutschland", "Martin Terens");
@@ -31,22 +31,31 @@ public class SendungsListe {
         Sendung sendung4 = new Sendung(4, true, adresse4, adresse5, LieferstatusEnum.AUFGEGEBEN, LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(4));
         Sendung sendung5 = new Sendung(5, false, adresse5, adresse4, LieferstatusEnum.ZUGESTELLT, LocalDateTime.now().minusDays(50), LocalDateTime.now().minusDays(20));
 
-        sendungsliste.add(sendung1);
-        sendungsliste.add(sendung2);
-        sendungsliste.add(sendung3);
-        sendungsliste.add(sendung4);
-        sendungsliste.add(sendung5);
+//        sendungsliste.add(sendung1);
+//        sendungsliste.add(sendung2);
+//        sendungsliste.add(sendung3);
+//        sendungsliste.add(sendung4);
+//        sendungsliste.add(sendung5);
 
-        return sendungsliste;
+        sendungslisteMap.put(1,sendung1);
+        sendungslisteMap.put(2,sendung2);
+        sendungslisteMap.put(3,sendung3);
+        sendungslisteMap.put(4,sendung4);
+        sendungslisteMap.put(5,sendung5);
+
+
+        return sendungslisteMap;
 
     }
 
     // Getter und Setter
-    public List<Sendung> getSendungsliste() {
-        return sendungsliste;
+
+    public HashMap<Integer, Sendung> getSendungslisteMap() {
+        return sendungslisteMap;
     }
 
-    public void setSendungsliste(List<Sendung> sendungsliste) {
-        this.sendungsliste = sendungsliste;
+    public void setSendungslisteMap(HashMap<Integer, Sendung> sendungslisteMap) {
+        this.sendungslisteMap = sendungslisteMap;
     }
+
 }

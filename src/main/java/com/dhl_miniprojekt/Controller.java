@@ -1,16 +1,25 @@
 package com.dhl_miniprojekt;
 
+import com.dhl_miniprojekt.model.LieferstatusEnum;
 import com.dhl_miniprojekt.model.Sendung;
 import com.dhl_miniprojekt.model.SendungsListe;
 
 import java.util.*;
+
+
+
 
 /**
  * 
  */
 public class Controller {
 
-    SendungsListe sendungsliste = new SendungsListe();
+
+
+
+//    SendungsListe sendungsliste = new SendungsListe();
+SendungsListe sendungsHashMap = new SendungsListe();
+
 
     // Attribute
     private Integer gesuchteSendung;
@@ -27,21 +36,20 @@ public class Controller {
     }
 
 
-    public Sendung sucheSendungsnummer(int gesuchteSendung) {
+    public void sucheSendungsnummer(int gesuchteSendung) {
 
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Bitte gebe eine Sendungsnummer ein");
-//        Integer sendungsnummer = scanner.nextInt();
-//
-//        for (int i = 0; i < sendungsliste.getSendungsliste().size(); i++) {
-//
-//
-//
-//            if (sendungsnummer.equals(sendungsliste.getSendungsliste()))
-//        }
-//
 
-        return null;
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Bitte gebe eine Sendungsnummer ein");
+        Integer sendungsnummer = scanner.nextInt();
+
+        if(sendungsHashMap.getSendungslisteMap().containsKey(sendungsnummer)){
+            System.out.println(sendungsHashMap.getSendungslisteMap().get(sendungsnummer).getLieferstatusEnum());
+
+        }
+
+
+
     }
 
 
@@ -50,3 +58,5 @@ public class Controller {
     }
 
 }
+
+
