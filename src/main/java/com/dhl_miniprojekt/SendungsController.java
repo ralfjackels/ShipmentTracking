@@ -31,8 +31,6 @@ public class SendungsController {
 
     /**
      * Zeigt die Startseite an und erstellt ein neues Objekt Sendung im Model
-     * @param model
-     * @return
      */
     @GetMapping(value = "/")
     public String zeigeStartseiteAn(Model model) {
@@ -42,17 +40,28 @@ public class SendungsController {
         return "sendungsSuche";
     }
 
+    /**
+     * Prüft ob die Sendung mit der Sendungsnummer vorhanden ist und ruft die nächste Seite auf
+     * @param model
+     * @param sendung
+     * @return
+     */
+
+
     @PostMapping(value = "/sendungsSuche")
     public String vergeleicheSendungsNummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
-
 
         Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
         model.addAttribute("gefundeneSendung", gefundeneSendung);
 
-
         return "sendungsInfo";
     }
 
+    /**
+     * Findet die korrekte Sendung. Falls keine Sendung gefunden wurde, wird ein PopUp angezeigt
+     * @param sendungNummer des im Model eingestellten Objekts
+     * @return
+     */
     private Sendung findeSendung(@RequestParam("sendungNummer") String sendungNummer) {
 
         Sendung gefundeneSendung = null;
