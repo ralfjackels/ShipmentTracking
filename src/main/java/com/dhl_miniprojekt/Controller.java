@@ -18,7 +18,7 @@ public class Controller {
 
 
 //    SendungsListe sendungsliste = new SendungsListe();
-SendungsListe sendungsHashMap = new SendungsListe();
+    private SendungsListe sendungsHashMap = new SendungsListe();
 
 
     // Attribute
@@ -38,10 +38,9 @@ SendungsListe sendungsHashMap = new SendungsListe();
 
     public void sucheSendungsnummer(int gesuchteSendung) {
 
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Bitte gebe eine Sendungsnummer ein");
-        Integer sendungsnummer = scanner.nextInt();
+        Integer sendungsnummer;
 
         do {
             System.out.println("Bitte gebe eine korrekte Sendungsnummer ein");

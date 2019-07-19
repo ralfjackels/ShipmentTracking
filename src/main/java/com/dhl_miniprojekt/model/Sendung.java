@@ -9,7 +9,7 @@ public class Sendung {
 
 
     // Attribute
-    private Integer sendungNummer;
+    private String sendungNummer;
     private boolean standard;
     private  Adresse lieferAdresse;
     private Adresse startAdresse;
@@ -19,10 +19,10 @@ public class Sendung {
 
 
     // Konstruktor
-    public Sendung() {
+    public Sendung(int i, boolean standard, Adresse adresse1, Adresse adresse2, LieferstatusEnum aufgegeben, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
     }
 
-    public Sendung(Integer sendungNummer, boolean standard, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
+    public Sendung(String sendungNummer, boolean standard, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
         this.sendungNummer = sendungNummer;
         this.standard = standard;
         this.lieferAdresse = lieferAdresse;
@@ -33,11 +33,11 @@ public class Sendung {
     }
 
     // Getter und Setter
-    public Integer getSendungNummer() {
+    public String getSendungNummer() {
         return sendungNummer;
     }
 
-    public void setSendungNummer(Integer sendungNummer) {
+    public void setSendungNummer(String sendungNummer) {
         this.sendungNummer = sendungNummer;
     }
 
