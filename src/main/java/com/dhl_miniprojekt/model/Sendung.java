@@ -1,12 +1,7 @@
 package com.dhl_miniprojekt.model;
 import java.time.LocalDateTime;
 
-/**
- * 
- */
 public class Sendung {
-
-
 
     // Attribute
     private String sendungNummer;
@@ -16,7 +11,6 @@ public class Sendung {
     private LieferstatusEnum lieferstatusEnum;
     private LocalDateTime abgabeZeitpunkt;
     private LocalDateTime lieferZeitpunkt;
-
 
     // Konstruktor
     public Sendung(int i, boolean standard, Adresse adresse1, Adresse adresse2, LieferstatusEnum aufgegeben, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {

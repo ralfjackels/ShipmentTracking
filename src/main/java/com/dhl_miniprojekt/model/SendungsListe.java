@@ -31,18 +31,11 @@ public class SendungsListe {
         Sendung sendung4 = new Sendung("4", true, adresse4, adresse5, LieferstatusEnum.AUFGEGEBEN, LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(4));
         Sendung sendung5 = new Sendung("5", false, adresse5, adresse4, LieferstatusEnum.ZUGESTELLT, LocalDateTime.now().minusDays(50), LocalDateTime.now().minusDays(20));
 
-//        sendungsliste.add(sendung1);
-//        sendungsliste.add(sendung2);
-//        sendungsliste.add(sendung3);
-//        sendungsliste.add(sendung4);
-//        sendungsliste.add(sendung5);
-
         sendungslisteMap.put(1,sendung1);
         sendungslisteMap.put(2,sendung2);
         sendungslisteMap.put(3,sendung3);
         sendungslisteMap.put(4,sendung4);
         sendungslisteMap.put(5,sendung5);
-
 
         return sendungslisteMap;
 

@@ -6,29 +6,17 @@ import com.dhl_miniprojekt.model.SendungsListe;
 
 import java.util.*;
 
-
-
-
-/**
- * 
- */
 public class Controller {
-
-
-
 
 //    SendungsListe sendungsliste = new SendungsListe();
     private SendungsListe sendungsHashMap = new SendungsListe();
 
-
     // Attribute
     private Integer gesuchteSendung;
-
 
     // Konstruktor
     public Controller() {
     }
-
 
     // Methoden
     public void fuegeSendungHinzu() {
@@ -52,7 +40,6 @@ public class Controller {
 
         }
     }
-
 
     public void zeigeSendung() {
         // TODO implement here
