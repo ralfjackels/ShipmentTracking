@@ -29,17 +29,18 @@ public class SendungsController {
         // TODO implement here
     }
 
+    /**
+     * Zeigt die Startseite an und erstellt ein neues Objekt Sendung im Model
+     * @param model
+     * @return
+     */
     @GetMapping(value = "/")
     public String zeigeStartseiteAn(Model model) {
 
         model.addAttribute("neueSendung", new Sendung());
 
-
-
-
         return "sendungsSuche";
     }
-
 
     @PostMapping(value = "/sendungsSuche")
     public String vergeleicheSendungsNummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){

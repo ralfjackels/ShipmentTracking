@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -21,16 +21,16 @@
             </div>
             <div class="col-md-9">
                 <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search all fields e.g. HTML">
-                <script>
-                    $(document).ready(function () {
-                        $("#myInput").on("keyup", function () {
-                            var value = $(this).val().toLowerCase();
-                            $("#myTable tr").filter(function () {
-                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                            });
-                        });
-                    });
-                </script>
+<!--                <script>-->
+<!--                    $(document).ready(function () {-->
+<!--                        $("#myInput").on("keyup", function () {-->
+<!--                            var value = $(this).val().toLowerCase();-->
+<!--                            $("#myTable tr").filter(function () {-->
+<!--                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
+<!--                            });-->
+<!--                        });-->
+<!--                    });-->
+<!--                </script>-->
             </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
   <head>
     <title>Sendungssuche</title>
@@ -15,14 +16,13 @@
       <form th:action="@{/sendungsInfo}"
             th:object="${neueSendung}" method="post">
 
-
         <fieldset>
           <legend>Sendungverfolgung</legend>
         </fieldset>
         <div class="inner-form">
           <div class="input-field first-wrap">
 
-            <input id="search" type="text" placeholder="Bitte gebe hier die gewünschte Sendungsnummer an" th:field="*{sendungNummer}" />
+            <input id="search" type="text" placeholder="Bitte gebe hier die gewünschte Sendungsnummer an" th:field="*{sendungNummer}"/>
           </div>
 
           <div class="input-field third-wrap">
