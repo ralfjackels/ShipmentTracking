@@ -8,12 +8,12 @@ import java.util.*;
 /**
  * 
  */
-public class SendungsListe {
+public class SendungsMap {
 
 //    private List<Sendung> sendungsliste;
     private HashMap <Integer, Sendung> sendungslisteMap = new HashMap<>();
 
-    public SendungsListe() {
+    public SendungsMap() {
         this.sendungslisteMap = erstelleSendungsListe();
     }
 

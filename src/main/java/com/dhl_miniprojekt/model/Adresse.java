@@ -4,9 +4,9 @@ public class Adresse {
 
     private String strasse;
     private String hausnummer;
-    private  String stadt;
+    private String stadt;
     private int plz;
-    String land;
+    private String land;
     private String name;
 
     public Adresse() {

@@ -16,6 +16,13 @@ public class Sendung {
     public Sendung(int i, boolean standard, Adresse adresse1, Adresse adresse2, LieferstatusEnum aufgegeben, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
     }
 
+    public Sendung(String sendungNummer) {
+        this.sendungNummer = sendungNummer;
+    }
+
+    public Sendung() {
+    }
+
     public Sendung(String sendungNummer, boolean standard, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
         this.sendungNummer = sendungNummer;
         this.standard = standard;
