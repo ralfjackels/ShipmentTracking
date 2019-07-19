@@ -11,7 +11,7 @@ import java.util.*;
 public class SendungsMap {
 
 //    private List<Sendung> sendungsliste;
-    private HashMap <Integer, Sendung> sendungslisteMap = new HashMap<>();
+    private HashMap <String, Sendung> sendungslisteMap = new HashMap<>();
 
     public SendungsMap() {
         this.sendungslisteMap = erstelleSendungsListe();
@@ -31,11 +31,11 @@ public class SendungsMap {
         Sendung sendung4 = new Sendung("4", true, adresse4, adresse5, LieferstatusEnum.AUFGEGEBEN, LocalDateTime.now().minusDays(1), LocalDateTime.now().plusDays(4));
         Sendung sendung5 = new Sendung("5", false, adresse5, adresse4, LieferstatusEnum.ZUGESTELLT, LocalDateTime.now().minusDays(50), LocalDateTime.now().minusDays(20));
 
-        sendungslisteMap.put(1,sendung1);
-        sendungslisteMap.put(2,sendung2);
-        sendungslisteMap.put(3,sendung3);
-        sendungslisteMap.put(4,sendung4);
-        sendungslisteMap.put(5,sendung5);
+        sendungslisteMap.put("1",sendung1);
+        sendungslisteMap.put("2",sendung2);
+        sendungslisteMap.put("3",sendung3);
+        sendungslisteMap.put("4",sendung4);
+        sendungslisteMap.put("5",sendung5);
 
         return sendungslisteMap;
 
@@ -43,11 +43,11 @@ public class SendungsMap {
 
     // Getter und Setter
 
-    public HashMap<Integer, Sendung> getSendungslisteMap() {
+    public HashMap<String, Sendung> getSendungslisteMap() {
         return sendungslisteMap;
     }
 
-    public void setSendungslisteMap(HashMap<Integer, Sendung> sendungslisteMap) {
+    public void setSendungslisteMap(HashMap<String, Sendung> sendungslisteMap) {
         this.sendungslisteMap = sendungslisteMap;
     }
 

@@ -64,10 +64,19 @@ public class SendungsController {
      */
     private Sendung findeSendung(@RequestParam("sendungNummer") String sendungNummer) {
 
-        Sendung gefundeneSendung = null;
+        Sendung gefundeneSendung = new Sendung();
 
         if (sendungsHashMap.getSendungslisteMap().containsKey(sendungNummer)){
-            gefundeneSendung = sendungsHashMap.getSendungslisteMap().get(sendungNummer);
+
+            gefundeneSendung.setSendungNummer(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getSendungNummer());
+            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
+            gefundeneSendung.setLieferAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferAdresse());
+            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
+            gefundeneSendung.setLieferstatusEnum(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferstatusEnum());
+            gefundeneSendung.setStartAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getStartAdresse());
+            gefundeneSendung.setStandard(sendungsHashMap.getSendungslisteMap().get(sendungNummer).isStandard());
+            gefundeneSendung.setLieferZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferZeitpunkt());
+
         } else {
             // TODO schreibe Methode
             //zeigePopUp();
