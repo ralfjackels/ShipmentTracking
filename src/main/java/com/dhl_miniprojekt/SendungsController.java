@@ -5,6 +5,8 @@ import com.dhl_miniprojekt.model.SendungsMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
@@ -17,8 +19,6 @@ public class SendungsController {
 
     private SendungsMap sendungsHashMap = new SendungsMap();
 
-    // Attribute
-    private Integer gesuchteSendung;
 
     // Konstruktor
     public SendungsController() {
@@ -30,11 +30,23 @@ public class SendungsController {
     }
 
     @GetMapping(value = "/")
-    public String sucheSendungsnummer(Model model, @RequestParam("sendungNummer") String sendungNummer) {
+    public String zeigeStartseiteAn(Model model) {
 
         model.addAttribute("neueSendung", new Sendung());
 
-        Sendung gefundeneSendung = findeSendung(sendungNummer);
+
+
+
+        return "sendungsSuche";
+    }
+
+
+    @PostMapping(value = "/sendungsSuche")
+    public String vergeleicheSendungsNummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
+
+
+        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+        model.addAttribute("gefundeneSendung", gefundeneSendung);
 
 
         return "sendungsInfo";
@@ -46,9 +58,15 @@ public class SendungsController {
 
         if (sendungsHashMap.getSendungslisteMap().containsKey(sendungNummer)){
             gefundeneSendung = sendungsHashMap.getSendungslisteMap().get(sendungNummer);
+        } else {
+            // TODO schreibe Methode
+            //zeigePopUp();
+
         }
         return gefundeneSendung;
     }
+
+
 }
 
 
