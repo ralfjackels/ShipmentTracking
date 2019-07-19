@@ -5,7 +5,7 @@ public class Sendung {
 
     // Attribute
     private String sendungNummer;
-    private boolean standard;
+    private StandardversandEnum versandArt;
     private  Adresse lieferAdresse;
     private Adresse startAdresse;
     private LieferstatusEnum lieferstatusEnum;
@@ -13,8 +13,7 @@ public class Sendung {
     private LocalDateTime lieferZeitpunkt;
 
     // Konstruktor
-    public Sendung(int i, boolean standard, Adresse adresse1, Adresse adresse2, LieferstatusEnum aufgegeben, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
-    }
+
 
     public Sendung(String sendungNummer) {
         this.sendungNummer = sendungNummer;
@@ -23,9 +22,9 @@ public class Sendung {
     public Sendung() {
     }
 
-    public Sendung(String sendungNummer, boolean standard, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
+    public Sendung(String sendungNummer, StandardversandEnum versandArt, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
         this.sendungNummer = sendungNummer;
-        this.standard = standard;
+        this.versandArt = versandArt;
         this.lieferAdresse = lieferAdresse;
         this.startAdresse = startAdresse;
         this.lieferstatusEnum = lieferstatusEnum;
@@ -42,12 +41,12 @@ public class Sendung {
         this.sendungNummer = sendungNummer;
     }
 
-    public boolean isStandard() {
-        return standard;
+    public StandardversandEnum getVersandArt() {
+        return versandArt;
     }
 
-    public void setStandard(boolean standard) {
-        this.standard = standard;
+    public void setVersandArt(StandardversandEnum versandArt) {
+        this.versandArt = versandArt;
     }
 
     public Adresse getLieferAdresse() {
