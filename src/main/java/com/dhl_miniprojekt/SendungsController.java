@@ -4,10 +4,7 @@ import com.dhl_miniprojekt.model.Sendung;
 import com.dhl_miniprojekt.model.SendungsMap;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -49,14 +46,48 @@ public class SendungsController {
      */
 
 
+//    @PostMapping(value = "/sendungsSuche")
+//    public String vergeleicheSendungsNummer (Model model,  @ModelAttribute("neueSendung") Sendung sendung){
+//
+//
+//        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+//        model.addAttribute("gefundeneSendung", gefundeneSendung);
+//
+//        return "sendungsInfo";
+//    }
+
+
+
+// VERSUCH +++++++++++++++++++++++++++++++++++++++++++++++++++++++
     @PostMapping(value = "/sendungsSuche")
-    public String vergeleicheSendungsNummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
+    public String vergeleicheSendungsNummer (@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
-        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
-        model.addAttribute("gefundeneSendung", gefundeneSendung);
+        if(action.equals("Suchen")) {
+            Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+            model.addAttribute("gefundeneSendung", gefundeneSendung);
 
-        return "sendungsInfo";
-    }
+            return "sendungsInfo";
+        } else {
+
+            return "hilfe";
+
+        }
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
 
 //    Weitere Suchanfragen auf sendungsSuche.Info
@@ -74,12 +105,15 @@ public class SendungsController {
     @PostMapping(value = "/sendungsInfo")
     public String vergleicheWeitereSendungsnummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
 
+
         Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
         model.addAttribute("gefundeneSendung", gefundeneSendung);
 
         return "sendungsInfo";
     }
 
+
+// Hilfe
 
 
 
