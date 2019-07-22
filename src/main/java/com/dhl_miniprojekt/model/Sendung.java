@@ -6,7 +6,7 @@ public class Sendung {
     // Attribute
     private String sendungNummer;
     private StandardversandEnum versandArt;
-    private  Adresse lieferAdresse;
+    private Adresse lieferAdresse;
     private Adresse startAdresse;
     private LieferstatusEnum lieferstatusEnum;
     private LocalDateTime abgabeZeitpunkt;

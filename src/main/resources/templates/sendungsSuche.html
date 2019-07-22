@@ -3,10 +3,12 @@
 
   <head>
     <title>Sendungssuche</title>
+<!--    <link rel="icon">  in den den Website TAB einfügen-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="author" content="colorlib.com">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <link href="../css/main.css" rel="stylesheet" />
   </head>
@@ -20,15 +22,20 @@
           <legend>Sendungverfolgung</legend>
         </fieldset>
         <div class="inner-form">
+
           <div class="input-field first-wrap">
-
             <input id="search" type="text" placeholder="Bitte geben Sie hier die gewünschte Sendungsnummer ein" th:field="*{sendungNummer}" required="" autofocus="" minlength="1" maxlength="8" oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"/>
-
           </div>
 
           <div class="input-field third-wrap">
             <button class="btn-search">Suchen</button>
           </div>
+
+          <div class="input-field third-wrap gapBetweenRJ">
+            <button class="btn-search">Hilfe</button>
+          </div>
+
+
         </div>
       </form>
     </div>
