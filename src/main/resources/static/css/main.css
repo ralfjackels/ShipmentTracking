@@ -1,6 +1,14 @@
 
 
 /* Sendungssuche*/
+
+
+.gapBetweenRJ {
+  margin-left: 20px;
+  text-align: center;
+}
+
+
 html {
   line-height: 1.15;
   /* 1 */

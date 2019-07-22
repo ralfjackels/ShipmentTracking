@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:hh="http://www.w3.org/1999/xhtml" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -56,7 +56,7 @@
             </tr>
             <tr>
                 <td>Lieferzeitpunkt</td>
-                <td th:text="${gefundeneSendung.getLieferZeitpunkt()}"></td>
+                <td th:utext="${gefundeneSendung.getLieferZeitpunkt()}"></td>
             </tr>
             <tr>
                 <td>Lieferadresse</td>

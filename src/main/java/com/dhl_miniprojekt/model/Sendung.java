@@ -1,16 +1,20 @@
 package com.dhl_miniprojekt.model;
+
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Sendung {
 
     // Attribute
     private String sendungNummer;
     private StandardversandEnum versandArt;
-    private  Adresse lieferAdresse;
+    private Adresse lieferAdresse;
     private Adresse startAdresse;
     private LieferstatusEnum lieferstatusEnum;
-    private LocalDateTime abgabeZeitpunkt;
-    private LocalDateTime lieferZeitpunkt;
+    private LocalDate abgabeZeitpunkt;
+    private LocalDate lieferZeitpunkt;
 
     // Konstruktor
 
@@ -22,7 +26,7 @@ public class Sendung {
     public Sendung() {
     }
 
-    public Sendung(String sendungNummer, StandardversandEnum versandArt, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDateTime abgabeZeitpunkt, LocalDateTime lieferZeitpunkt) {
+    public Sendung(String sendungNummer, StandardversandEnum versandArt, Adresse lieferAdresse, Adresse startAdresse, LieferstatusEnum lieferstatusEnum, LocalDate abgabeZeitpunkt, LocalDate lieferZeitpunkt) {
         this.sendungNummer = sendungNummer;
         this.versandArt = versandArt;
         this.lieferAdresse = lieferAdresse;
@@ -73,19 +77,19 @@ public class Sendung {
         this.lieferstatusEnum = lieferstatusEnum;
     }
 
-    public LocalDateTime getAbgabeZeitpunkt() {
+    public LocalDate getAbgabeZeitpunkt() {
         return abgabeZeitpunkt;
     }
 
-    public void setAbgabeZeitpunkt(LocalDateTime abgabeZeitpunkt) {
+    public void setAbgabeZeitpunkt(LocalDate abgabeZeitpunkt) {
         this.abgabeZeitpunkt = abgabeZeitpunkt;
     }
 
-    public LocalDateTime getLieferZeitpunkt() {
+    public LocalDate getLieferZeitpunkt() {
         return lieferZeitpunkt;
     }
 
-    public void setLieferZeitpunkt(LocalDateTime lieferZeitpunkt) {
+    public void setLieferZeitpunkt(LocalDate lieferZeitpunkt) {
         this.lieferZeitpunkt = lieferZeitpunkt;
     }
 }
