@@ -1,10 +1,18 @@
 package com.dhl_miniprojekt;
 
-import com.dhl_miniprojekt.model.Sendung;
+import com.dhl_miniprojekt.entities.Sendung;
 import com.dhl_miniprojekt.model.SendungsMap;
+import com.dhl_miniprojekt.repositories.KundeRepository;
+import com.dhl_miniprojekt.repositories.SendungsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Optional;
 
 /**
  *
@@ -13,6 +21,12 @@ import org.springframework.web.bind.annotation.*;
 public class SendungsController {
 
 //    SendungsMap sendungsliste = new SendungsMap();
+
+    @Autowired
+    private KundeRepository kundeRepository;
+
+    @Autowired
+    private SendungsRepository SendungsRepository;
 
     private SendungsMap sendungsHashMap = new SendungsMap();
 
@@ -59,11 +73,18 @@ public class SendungsController {
 
 
 // VERSUCH +++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
     @PostMapping(value = "/sendungsSuche")
     public String vergeleicheSendungsNummer (@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
         if(action.equals("Suchen")) {
-            Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+
+
+            Optional<Sendung> optionalSendung = SendungsRepository.findById(Integer.parseInt(sendung.getSendungNummer()));
+            Sendung gefundeneSendung = optionalSendung.get();
+
+
             model.addAttribute("gefundeneSendung", gefundeneSendung);
 
             return "sendungsInfo";
@@ -104,10 +125,9 @@ public class SendungsController {
 
     @PostMapping(value = "/sendungsInfo")
     public String vergleicheWeitereSendungsnummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
-
-
-        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
-        model.addAttribute("gefundeneSendung", gefundeneSendung);
+//
+//        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+//        model.addAttribute("gefundeneSendung", gefundeneSendung);
 
         return "sendungsInfo";
     }
@@ -126,28 +146,28 @@ public class SendungsController {
      * @param sendungNummer des im Model eingestellten Objekts
      * @return
      */
-    private Sendung findeSendung(@RequestParam("sendungNummer") String sendungNummer) {
-
-        Sendung gefundeneSendung = new Sendung();
-
-        if (sendungsHashMap.getSendungslisteMap().containsKey(sendungNummer)){
-
-            gefundeneSendung.setSendungNummer(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getSendungNummer());
-            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
-            gefundeneSendung.setLieferAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferAdresse());
-            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
-            gefundeneSendung.setLieferstatusEnum(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferstatusEnum());
-            gefundeneSendung.setStartAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getStartAdresse());
-            gefundeneSendung.setVersandArt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getVersandArt());
-            gefundeneSendung.setLieferZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferZeitpunkt());
-
-        } else {
-            // TODO schreibe Methode
-            //zeigePopUp();
-
-        }
-        return gefundeneSendung;
-    }
+//    private Sendung findeSendung(@RequestParam("sendungNummer") String sendungNummer) {
+//
+//        Sendung gefundeneSendung = new Sendung();
+//
+//        if (sendungsHashMap.getSendungslisteMap().containsKey(sendungNummer)){
+//
+//            gefundeneSendung.setSendungNummer(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getSendungNummer());
+//            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
+//            gefundeneSendung.setLieferAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferAdresse());
+//            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
+//            gefundeneSendung.setLieferstatusEnum(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferstatusEnum());
+//            gefundeneSendung.setStartAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getStartAdresse());
+//            gefundeneSendung.setVersandArt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getVersandArt());
+//            gefundeneSendung.setLieferZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferZeitpunkt());
+//
+//        } else {
+//            // TODO schreibe Methode
+//            //zeigePopUp();
+//
+//        }
+//        return gefundeneSendung;
+//    }
 
 
 }

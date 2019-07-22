@@ -1,7 +1,8 @@
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Required meta tags -->
     <title>Info</title>
@@ -22,7 +23,9 @@
 </head>
 <body>
 <section id="contact">
+
     <div class="container">
+        <form th:action="@{/hilfe}">
         <h3 class="text-center text-uppercase">contact us</h3>
         <p class="text-center w-75 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum purus at sem ornare sodales. Morbi leo nulla, pharetra vel felis nec, ullamcorper condimentum quam.</p>
         <div class="row">
@@ -64,6 +67,7 @@
             </div>
         </div>
     </div>
+    </form>
 </section>
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
