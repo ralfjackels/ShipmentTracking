@@ -21,7 +21,7 @@ public class SendungsMap {
 
     public HashMap erstelleSendungsListe() {
 
-        Adresse adresse1 = new Adresse("Hansstraße", "25", "Köln", 50969, "Deutschland", "Ralf Jaeckels");
+        Adresse adresse1 = new Adresse("Hansstraße", "25", "Köln", 50969, "Deutschland", "Ralf Jackels");
         Adresse adresse2 = new Adresse("Bonzenstr.", "60", "Hamburg", 20257, "Deutschland", "Martin Terens");
         Adresse adresse3 = new Adresse("Neue Landstr.", "1", "Berlin", 10101, "Deutschland", "Laura Lewinski");
         Adresse adresse4 = new Adresse("Autobahnstr.", "99", "München", 89969, "Deutschland", "Maria Gut");
