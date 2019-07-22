@@ -8,95 +8,108 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link href="../css/main.css" rel="stylesheet" />
+    <link href="../css/main.css" rel="stylesheet"/>
 </head>
 <body>
 
 
 <div class="container search-table">
-    <div class="search-box">
-        <div class="row">
-            <div class="col-md-3">
-                <h5>Search All Fields</h5>
-            </div>
-            <div class="col-md-9">
-                <input type="text" id="myInput" onkeyup="myFunction()" class="form-control" placeholder="Search all fields e.g. HTML">
-<!--                <script>-->
-<!--                    $(document).ready(function () {-->
-<!--                        $("#myInput").on("keyup", function () {-->
-<!--                            var value = $(this).val().toLowerCase();-->
-<!--                            $("#myTable tr").filter(function () {-->
-<!--                                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
-<!--                            });-->
-<!--                        });-->
-<!--                    });-->
-<!--                </script>-->
+    <!--    Für eventuelle folgende Sendungssuchen-->
+    <form th:action="@{/sendungsInfo}"
+          th:object="${neueSendung}" method="post">
+
+
+        <!--    Erste Suche -->
+        <div class="search-box">
+            <div class="row">
+
+                <div class="col-md-3">
+                    <h1>Sendungssuche</h1>
+                </div>
+
+                <div class="col-md-3 input-field" >
+                    <input type="text" id="weitereSuche"
+                           class="form-control"
+                           autocomplete="off"
+                           value=""
+                           placeholder="Weitere Sendungen?"
+                           th:field="*{sendungNummer}"
+                           autofocus required minlength="1" maxlength="1"
+                           oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"
+                           oninput="setCustomValidity('')"/>
+                </div>
+
+                <div class="col-md-3">
+                    <button class="btn-search btn-primary">Suche</button>
+
+                </div>
+
+
             </div>
         </div>
-    </div>
-    <div class="search-list">
-        <h3>Details zur Sendung:</h3>
-        <table class="table" id="myTable">
-            <thead>
-            <tr>
-                <th>Title</th>
-                <th>Category</th>
-            </tr>
-            </thead>
-            <tbody>
+        <div class="search-list">
+            <h3>Details zur Sendung:</h3>
+            <table class="table" id="myTable">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Category</th>
+                </tr>
+                </thead>
+                <tbody>
 
 
-            <tr>
-                <td>Sendungsnummer</td>
-                <td th:text="${gefundeneSendung.getSendungNummer()}"></td>
-            </tr>
-            <tr>
-                <td>Lieferstatus</td>
-                <td th:text="${gefundeneSendung.getLieferstatusEnum()}"></td>
-            </tr>
-            <tr>
-                <td>Lieferzeitpunkt</td>
-                <td th:utext="${gefundeneSendung.getLieferZeitpunkt()}"></td>
-            </tr>
-            <tr>
-                <td>Lieferadresse</td>
+                <tr>
+                    <td>Sendungsnummer</td>
+                    <td th:text="${gefundeneSendung.getSendungNummer()}"></td>
+                </tr>
+                <tr>
+                    <td>Lieferstatus</td>
+                    <td th:text="${gefundeneSendung.getLieferstatusEnum()}"></td>
+                </tr>
+                <tr>
+                    <td>Lieferzeitpunkt</td>
+                    <td th:utext="${gefundeneSendung.getLieferZeitpunkt()}"></td>
+                </tr>
+                <tr>
+                    <td>Lieferadresse</td>
 
-                <td th:utext="${gefundeneSendung.getLieferAdresse().getName() +
+                    <td th:utext="${gefundeneSendung.getLieferAdresse().getName() +
                 '<br>' + gefundeneSendung.getLieferAdresse().getStrasse() +
                 ' ' + gefundeneSendung.getLieferAdresse().getHausnummer() +
                 '<br>' + gefundeneSendung.getLieferAdresse().getPlz() +
                 ' ' + gefundeneSendung.getLieferAdresse().getStadt() +
                 '<br>' + gefundeneSendung.getLieferAdresse().getLand()}"></td>
 
-            </tr>
-            <tr>
-                <td>Versandart</td>
-                <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>
-            </tr>
-            <tr>
-                <td>Absender</td>
-                <td th:utext="${gefundeneSendung.getStartAdresse().getName() +
+                </tr>
+                <tr>
+                    <td>Versandart</td>
+                    <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>
+                </tr>
+                <tr>
+                    <td>Absender</td>
+                    <td th:utext="${gefundeneSendung.getStartAdresse().getName() +
                 '<br>' + gefundeneSendung.getStartAdresse().getStrasse() +
                 ' ' + gefundeneSendung.getStartAdresse().getHausnummer() +
                 '<br>' + gefundeneSendung.getStartAdresse().getPlz() +
                 ' ' + gefundeneSendung.getStartAdresse().getStadt() +
                 '<br>' + gefundeneSendung.getStartAdresse().getLand()}"></td>
-            </tr><tr>
-                <td>Aufgegeben</td>
-                <td th:text="${gefundeneSendung.getAbgabeZeitpunkt()}"></td>
-            </tr>
+                </tr>
+                <tr>
+                    <td>Aufgegeben</td>
+                    <td th:text="${gefundeneSendung.getAbgabeZeitpunkt()}"></td>
+                </tr>
 
 
-            </tbody>
-        </table>
+                </tbody>
+            </table>
 
-    </div>
+        </div>
+    </form>
 </div>
 
 
 </body>
-
-
 
 
 </html>

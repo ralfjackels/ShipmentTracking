@@ -40,6 +40,7 @@ public class SendungsController {
         return "sendungsSuche";
     }
 
+
     /**
      * Prüft ob die Sendung mit der Sendungsnummer vorhanden ist und ruft die nächste Seite auf
      * @param model
@@ -56,6 +57,35 @@ public class SendungsController {
 
         return "sendungsInfo";
     }
+
+
+//    Weitere Suchanfragen auf sendungsSuche.Info
+
+
+    @GetMapping(value = "/sendungsInfo")
+    public String sucheWeitereSendungsnummer (Model model) {
+
+        model.addAttribute("neueSendung", new Sendung());
+
+        return "sendungsInfo";
+    }
+
+
+    @PostMapping(value = "/sendungsInfo")
+    public String vergleicheWeitereSendungsnummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
+
+        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+        model.addAttribute("gefundeneSendung", gefundeneSendung);
+
+        return "sendungsInfo";
+    }
+
+
+
+
+
+
+
 
     /**
      * Findet die korrekte Sendung. Falls keine Sendung gefunden wurde, wird ein PopUp angezeigt
