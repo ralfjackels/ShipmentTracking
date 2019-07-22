@@ -3,6 +3,7 @@
 
 <head>
     <title>Sendungssuche</title>
+<!--    <link rel="icon" href="../static/image/Logo.jpg">-->
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -21,8 +22,11 @@
         </fieldset>
         <div class="inner-form">
 
+
+
             <div class="input-field first-wrap">
-                <input id="search" type="text" autocomplete="off"
+                <input id="search" type="text"
+                       autocomplete="off"
                        placeholder="Bitte geben Sie hier die gewünschte Sendungsnummer ein" th:field="*{sendungNummer}"
                        autofocus required minlength="1" maxlength="1"
                        oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"
@@ -30,20 +34,17 @@
             </div>
 
             <div class="input-field third-wrap">
-                <button class="btn-search">Suchen</button>
+                <button name="action" value="Suchen" class="btn-search">Suchen</button>
             </div>
-            <div></div>
+
             <div class="input-field third-wrap gapBetweenRJ">
-                <a class="btn-search" href="hilfe.html" th:href="@{http://localhost:8080/hilfe.html}">Hilfe</a>
-
-
+                <button autocomplete="off" name="action" value="Hilfe" class="btn-search">Hilfe</button>
             </div>
-
-
-
 
         </div>
     </form>
+
+
 </div>
 </body>
 
