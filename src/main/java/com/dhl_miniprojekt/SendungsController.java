@@ -1,5 +1,6 @@
 package com.dhl_miniprojekt;
 
+import com.dhl_miniprojekt.entities.Kunde;
 import com.dhl_miniprojekt.entities.Sendung;
 import com.dhl_miniprojekt.model.SendungsMap;
 import com.dhl_miniprojekt.repositories.KundeRepository;
@@ -55,42 +56,36 @@ public class SendungsController {
 
     /**
      * Prüft ob die Sendung mit der Sendungsnummer vorhanden ist und ruft die nächste Seite auf
+     *
      * @param model
      * @param sendung
      * @return
      */
 
 
-//    @PostMapping(value = "/sendungsSuche")
-//    public String vergeleicheSendungsNummer (Model model,  @ModelAttribute("neueSendung") Sendung sendung){
-//
-//
-//        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
-//        model.addAttribute("gefundeneSendung", gefundeneSendung);
-//
-//        return "sendungsInfo";
-//    }
-
-
-
-// VERSUCH +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
     @PostMapping(value = "/sendungsSuche")
-    public String vergeleicheSendungsNummer (@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
+    public String vergeleicheSendungsNummer(@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
-        if(action.equals("Suchen")) {
 
+        if (action.equals("Suchen")) {
 
             Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
             Sendung gefundeneSendung = optionalSendung.get();
 
+            Kunde empfaenger = gefundeneSendung.getEmpfaenger();
+            Kunde absender = gefundeneSendung.getAbsender();
 
             model.addAttribute("gefundeneSendung", gefundeneSendung);
+            model.addAttribute("empfaenger", empfaenger);
+            model.addAttribute("absender", absender);
 
             return "sendungsInfo";
 
         } else {
+
+
+
 
             return "hilfe";
 
@@ -99,13 +94,11 @@ public class SendungsController {
     }
 
 
-
-
 //    Weitere Suchanfragen auf sendungsSuche.Info
 
 
     @GetMapping(value = "/sendungsInfo")
-    public String sucheWeitereSendungsnummer (Model model) {
+    public String sucheWeitereSendungsnummer(Model model) {
 
         model.addAttribute("neueSendung", new Sendung());
 
@@ -114,7 +107,7 @@ public class SendungsController {
 
 
     @PostMapping(value = "/sendungsInfo")
-    public String vergleicheWeitereSendungsnummer (Model model, @ModelAttribute("neueSendung") Sendung sendung){
+    public String vergleicheWeitereSendungsnummer(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 //
 //        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
 //        model.addAttribute("gefundeneSendung", gefundeneSendung);

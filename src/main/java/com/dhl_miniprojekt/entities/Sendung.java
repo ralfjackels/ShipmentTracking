@@ -4,6 +4,7 @@ import com.dhl_miniprojekt.model.LieferstatusEnum;
 import com.dhl_miniprojekt.model.StandardversandEnum;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class Sendung {
@@ -13,9 +14,10 @@ public class Sendung {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     private Integer sendungNummer;
-
     private String versandArt;
     private String lieferstatus;
+    private LocalDate abgabedatum;
+    private LocalDate lieferdatum;
 
     @ManyToOne
     private Kunde absender;
@@ -26,6 +28,25 @@ public class Sendung {
 //    @ManyToOne
 //    @JoinColumn
 //    private Kunde kunde;
+
+
+
+
+    public LocalDate getAbgabedatum() {
+        return abgabedatum;
+    }
+
+    public void setAbgabedatum(LocalDate abgabedatum) {
+        this.abgabedatum = abgabedatum;
+    }
+
+    public LocalDate getLieferdatum() {
+        return lieferdatum;
+    }
+
+    public void setLieferdatum(LocalDate lieferdatum) {
+        this.lieferdatum = lieferdatum;
+    }
 
     public Kunde getAbsender() {
         return absender;
