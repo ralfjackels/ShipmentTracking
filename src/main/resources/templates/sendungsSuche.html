@@ -22,22 +22,17 @@
         </fieldset>
         <div class="inner-form">
 
-
             <div class="input-field first-wrap">
                 <input id="search" type="text"
                        autocomplete="off"
                        placeholder="Bitte geben Sie hier die gewünschte Sendungsnummer ein" th:field="*{sendungNummer}"
-                       autofocus required minlength="1" maxlength="1"
+                       autofocus required minlength="1" maxlength="2"
                        oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"
                        oninput="setCustomValidity('')"/>
             </div>
 
             <div class="input-field third-wrap">
                 <button name="action" value="Suchen" class="btn-search">Suchen</button>
-            </div>
-
-            <div class="input-field third-wrap gapBetweenRJ">
-                <button autocomplete="off" name="action" value="Hilfe" class="btn-search">Hilfe</button>
             </div>
 
         </div>
