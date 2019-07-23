@@ -35,6 +35,7 @@ public class SendungsController {
     public SendungsController() {
     }
 
+
     // Methoden
     public void fuegeSendungHinzu() {
         // TODO implement here

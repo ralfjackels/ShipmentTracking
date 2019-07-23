@@ -20,11 +20,11 @@ private String stadt;
 private String land;
 
 
-    @OneToMany(mappedBy = "empfaenger")
-    private List<Sendung> empfaengerListe = new ArrayList<>();
+    @OneToMany(mappedBy = "kunde")
+    private List<Sendung> sendungliste = new ArrayList<>();
 
-    @OneToMany(mappedBy = "absender")
-    private List<Sendung> absenderListe = new ArrayList<>();
+
+
 
     public Integer getId() {
         return id;

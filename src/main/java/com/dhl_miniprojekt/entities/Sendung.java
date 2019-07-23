@@ -22,19 +22,13 @@ public class Sendung {
     private String sendungNummer;
     private StandardversandEnum versandArt;
 
-    @OneToOne
-    @JoinColumn
-    private Kunde absender;
 
-    @OneToOne
-    @JoinColumn
+    private Kunde absender;
     private Kunde empfaenger;
 
     @ManyToOne
     @JoinColumn
     private Kunde kunde;
-
-
 
     public Integer getId() {
         return id;
