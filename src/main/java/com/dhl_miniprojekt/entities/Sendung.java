@@ -24,6 +24,9 @@ public class Sendung {
     private Kunde absender;
     private Kunde empfaenger;
 
+    @ManyToOne
+    @JoinColumn
+    private Sendung sendung;
 
     public Integer getId() {
         return id;

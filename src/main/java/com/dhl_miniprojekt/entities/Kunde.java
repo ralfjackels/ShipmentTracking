@@ -19,21 +19,12 @@ private String plz;
 private String stadt;
 private String land;
 
-@ManyToOne
-@JoinColumn
-private Sendung sendung;
 
     @OneToMany(mappedBy = "sendung")
-    private List<Kunde> kommentare = new ArrayList<>();
+    private List<Kunde> kundenliste = new ArrayList<>();
 
 
-    public Sendung getSendung() {
-        return sendung;
-    }
 
-    public void setSendung(Sendung sendung) {
-        this.sendung = sendung;
-    }
 
     public Integer getId() {
         return id;
