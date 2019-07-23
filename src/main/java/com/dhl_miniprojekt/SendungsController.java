@@ -67,12 +67,9 @@ public class SendungsController {
     @PostMapping(value = "/sendungsSuche")
     public String vergeleicheSendungsNummer(@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
-
         Sendung gefundeneSendung = new Sendung();
 
         if (action.equals("Suchen")) {
-
-
 
             if (SendungsRepository.existsById(sendung.getSendungNummer())) {
 
@@ -85,6 +82,7 @@ public class SendungsController {
                 model.addAttribute("gefundeneSendung", gefundeneSendung);
                 model.addAttribute("empfaenger", empfaenger);
                 model.addAttribute("absender", absender);
+
                 return "sendungsInfo";
 
             } else {
@@ -94,19 +92,18 @@ public class SendungsController {
 
                 model.addAttribute("gefundeneSendung", gefundeneSendung);
 
+
                 return "sendungsInfo";
             }
 
         } else {
 
-            gefundeneSendung.setSendungNummer(null);
 
-
-            model.addAttribute("gefundeneSendung", gefundeneSendung);
 
             return "hilfe";
 
         }
+
 
 
     }
