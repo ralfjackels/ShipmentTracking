@@ -5,10 +5,13 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Required meta tags -->
-    <title>Info</title>
+    <title>Hilfe</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--  Google Fonts > Schriftart Roboto-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -26,45 +29,60 @@
 
     <div class="container">
         <form th:action="@{/hilfe}">
-        <h3 class="text-center text-uppercase">contact us</h3>
-        <p class="text-center w-75 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum purus at sem ornare sodales. Morbi leo nulla, pharetra vel felis nec, ullamcorper condimentum quam.</p>
+        <h3 class="text-center text-uppercase">Wir helfen gerne</h3>
+        <p class="text-center w-75 m-auto">Wenn Sie Probleme bei der Sendungssuche haben, kontaktieren Sie uns auf folgenden Wegen</p>
         <div class="row">
+
+
+<!--            WHATTSAPP-->
             <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                 <div class="card border-0">
                     <div class="card-body text-center">
                         <i class="fa fa-phone fa-5x mb-3" aria-hidden="true"></i>
-                        <h4 class="text-uppercase mb-5">call us</h4>
-                        <p>+8801683615582,+8801750603409</p>
+                        <h4 class="text-uppercase mb-5">WhattsApp</h4>
+                        <p>+49 177 1234567</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 my-5">
-                <div class="card border-0">
-                    <div class="card-body text-center">
-                        <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
-                        <h4 class="text-uppercase mb-5">office loaction</h4>
-                        <address>Suite 02, Level 12, Sahera Tropical Center </address>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-3 my-5">
-                <div class="card border-0">
-                    <div class="card-body text-center">
-                        <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
-                        <h4 class="text-uppercase mb-5">office loaction</h4>
-                        <address>Suite 02, Level 12, Sahera Tropical Center </address>
-                    </div>
-                </div>
-            </div>
+
+
+<!--            MAIL -->
             <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                 <div class="card border-0">
                     <div class="card-body text-center">
                         <i class="fa fa-globe fa-5x mb-3" aria-hidden="true"></i>
                         <h4 class="text-uppercase mb-5">email</h4>
-                        <p>http://al.a.noman1416@gmail.com</p>
+                        <p>MyParcel@myHome.com</p>
                     </div>
                 </div>
             </div>
+
+
+<!--                VOR ORT-->
+            <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+                <div class="card border-0">
+                    <div class="card-body text-center">
+                        <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
+                        <h4 class="text-uppercase mb-5">DHL vor Ort</h4>
+                        <address>Ums Eck 23, 50667 Köln</address>
+                    </div>
+                </div>
+            </div>
+
+
+<!--                NEUE SUCHE-->
+            <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+                <div class="card border-0">
+                    <div class="card-body text-center">
+                        <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
+                        <h4 class="text-uppercase mb-5">Neue Suche</h4>
+<!--                        <address>Sendungssuche</address>-->
+                        <a th:href="@{/}">Neue Suche</a>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
         </form>
     </div>
