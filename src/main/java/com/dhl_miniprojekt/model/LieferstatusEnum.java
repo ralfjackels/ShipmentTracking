@@ -1,4 +1,5 @@
 package com.dhl_miniprojekt.model;
+
 /**
  * 
  */

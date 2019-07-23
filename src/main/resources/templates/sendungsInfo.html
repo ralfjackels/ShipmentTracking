@@ -63,42 +63,42 @@
                     <td>Sendungsnummer</td>
                     <td th:text="${gefundeneSendung.getSendungNummer()}"></td>
                 </tr>
-                <tr>
-                    <td>Lieferstatus</td>
-                    <td th:text="${gefundeneSendung.getLieferstatusEnum()}"></td>
-                </tr>
-                <tr>
-                    <td>Lieferzeitpunkt</td>
-                    <td th:utext="${gefundeneSendung.getLieferZeitpunkt()}"></td>
-                </tr>
-                <tr>
-                    <td>Lieferadresse</td>
+<!--                <tr>-->
+<!--                    <td>Lieferstatus</td>-->
+<!--                    <td th:text="${gefundeneSendung.getLieferstatusEnum()}"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Lieferzeitpunkt</td>-->
+<!--                    <td th:utext="${gefundeneSendung.getLieferZeitpunkt()}"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Lieferadresse</td>-->
 
-                    <td th:utext="${gefundeneSendung.getLieferAdresse().getName() +
-                '<br>' + gefundeneSendung.getLieferAdresse().getStrasse() +
-                ' ' + gefundeneSendung.getLieferAdresse().getHausnummer() +
-                '<br>' + gefundeneSendung.getLieferAdresse().getPlz() +
-                ' ' + gefundeneSendung.getLieferAdresse().getStadt() +
-                '<br>' + gefundeneSendung.getLieferAdresse().getLand()}"></td>
+<!--                    <td th:utext="${gefundeneSendung.getLieferAdresse().getName() +-->
+<!--                '<br>' + gefundeneSendung.getLieferAdresse().getStrasse() +-->
+<!--                ' ' + gefundeneSendung.getLieferAdresse().getHausnummer() +-->
+<!--                '<br>' + gefundeneSendung.getLieferAdresse().getPlz() +-->
+<!--                ' ' + gefundeneSendung.getLieferAdresse().getStadt() +-->
+<!--                '<br>' + gefundeneSendung.getLieferAdresse().getLand()}"></td>-->
 
-                </tr>
-                <tr>
-                    <td>Versandart</td>
-                    <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>
-                </tr>
-                <tr>
-                    <td>Absender</td>
-                    <td th:utext="${gefundeneSendung.getStartAdresse().getName() +
-                '<br>' + gefundeneSendung.getStartAdresse().getStrasse() +
-                ' ' + gefundeneSendung.getStartAdresse().getHausnummer() +
-                '<br>' + gefundeneSendung.getStartAdresse().getPlz() +
-                ' ' + gefundeneSendung.getStartAdresse().getStadt() +
-                '<br>' + gefundeneSendung.getStartAdresse().getLand()}"></td>
-                </tr>
-                <tr>
-                    <td>Aufgegeben</td>
-                    <td th:text="${gefundeneSendung.getAbgabeZeitpunkt()}"></td>
-                </tr>
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Versandart</td>-->
+<!--                    <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Absender</td>-->
+<!--                    <td th:utext="${gefundeneSendung.getStartAdresse().getName() +-->
+<!--                '<br>' + gefundeneSendung.getStartAdresse().getStrasse() +-->
+<!--                ' ' + gefundeneSendung.getStartAdresse().getHausnummer() +-->
+<!--                '<br>' + gefundeneSendung.getStartAdresse().getPlz() +-->
+<!--                ' ' + gefundeneSendung.getStartAdresse().getStadt() +-->
+<!--                '<br>' + gefundeneSendung.getStartAdresse().getLand()}"></td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Aufgegeben</td>-->
+<!--                    <td th:text="${gefundeneSendung.getAbgabeZeitpunkt()}"></td>-->
+<!--                </tr>-->
 
 
                 </tbody>

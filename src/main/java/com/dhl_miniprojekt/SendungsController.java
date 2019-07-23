@@ -81,32 +81,21 @@ public class SendungsController {
         if(action.equals("Suchen")) {
 
 
-            Optional<Sendung> optionalSendung = SendungsRepository.findById(Integer.parseInt(sendung.getSendungNummer()));
+            Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
             Sendung gefundeneSendung = optionalSendung.get();
 
 
             model.addAttribute("gefundeneSendung", gefundeneSendung);
 
             return "sendungsInfo";
+
         } else {
 
             return "hilfe";
 
         }
 
-
-
-
-        }
-
-
-
-
-
-
-
-
-
+    }
 
 
 
@@ -134,11 +123,6 @@ public class SendungsController {
 
 
 // Hilfe
-
-
-
-
-
 
 
     /**
