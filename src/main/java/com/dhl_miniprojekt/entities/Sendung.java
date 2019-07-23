@@ -26,7 +26,7 @@ public class Sendung {
 
     @ManyToOne
     @JoinColumn
-    private Sendung sendung;
+    private Kunde kunde;
 
     public Integer getId() {
         return id;

@@ -21,7 +21,7 @@ private String land;
 
 
     @OneToMany(mappedBy = "sendung")
-    private List<Kunde> kundenliste = new ArrayList<>();
+    private List<Sendung> sendungliste = new ArrayList<>();
 
 
 
