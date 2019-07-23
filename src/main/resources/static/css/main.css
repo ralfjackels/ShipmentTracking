@@ -651,5 +651,18 @@ legend {
 /* Hilfe */
 
 #contact .card:hover i,#contact .card:hover h4{
-  color: #87d37c;
+  color: darkseagreen;
+}
+
+.spaceToBottomRJ{
+
+    margin-top: 100px;
+}
+
+.fontSizeBigRJ {
+    font-size: 50px;
+}
+
+.fontSizeMiddleRJ{
+    font-size: 25px;
 }
