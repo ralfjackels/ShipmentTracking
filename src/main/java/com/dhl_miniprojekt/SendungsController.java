@@ -133,6 +133,13 @@ public class SendungsController {
 
 // Hilfe
 
+    @GetMapping(value = "/hilfe")
+    public String zeigeHilfeseiteAn(Model model) {
+
+        model.addAttribute("neueSendung", new Sendung());
+
+        return "hilfe";
+    }
 
     /**
      * Findet die korrekte Sendung. Falls keine Sendung gefunden wurde, wird ein PopUp angezeigt
