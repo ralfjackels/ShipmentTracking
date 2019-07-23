@@ -1,5 +1,7 @@
 package com.dhl_miniprojekt.entities;
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +9,9 @@ import java.util.List;
 @Entity
 public class Kunde {
 
-    @Id
-    @GeneratedValue
+@Id
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Column(nullable = false, updatable = false)
 private Integer id;
 
 private String vorName;
@@ -20,11 +23,11 @@ private String stadt;
 private String land;
 
 
-    @OneToMany(mappedBy = "kunde")
-    private List<Sendung> sendungliste = new ArrayList<>();
+    @OneToMany(mappedBy = "empfaenger") //@ManyToOne bei empfaenger Objekt in Sendung
+    private List<Sendung> empfaengerListe = new ArrayList<>();
 
-
-
+    @OneToMany(mappedBy = "absender") //@ManyToOne bei absender Objekt in Sendung
+    private List<Sendung> absenderListe = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -32,6 +35,22 @@ private String land;
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public List<Sendung> getEmpfaengerListe() {
+        return empfaengerListe;
+    }
+
+    public void setEmpfaengerListe(List<Sendung> empfaengerListe) {
+        this.empfaengerListe = empfaengerListe;
+    }
+
+    public List<Sendung> getAbsenderListe() {
+        return absenderListe;
+    }
+
+    public void setAbsenderListe(List<Sendung> absenderListe) {
+        this.absenderListe = absenderListe;
     }
 
     public String getVorName() {

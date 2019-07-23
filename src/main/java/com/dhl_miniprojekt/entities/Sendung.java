@@ -1,42 +1,31 @@
 package com.dhl_miniprojekt.entities;
 
-
-import com.dhl_miniprojekt.model.Adresse;
 import com.dhl_miniprojekt.model.LieferstatusEnum;
 import com.dhl_miniprojekt.model.StandardversandEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 public class Sendung {
 
     // Attribute
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, nullable = false)
+    private Integer sendungNummer;
 
-
-
-    private String sendungNummer;
-    private StandardversandEnum versandArt;
-
-
-    private Kunde absender;
-    private Kunde empfaenger;
+    private String versandArt;
+    private String lieferstatus;
 
     @ManyToOne
-    @JoinColumn
-    private Kunde kunde;
+    private Kunde absender;
 
-    public Integer getId() {
-        return id;
-    }
+    @ManyToOne
+    private Kunde empfaenger;
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+//    @ManyToOne
+//    @JoinColumn
+//    private Kunde kunde;
 
     public Kunde getAbsender() {
         return absender;
@@ -54,19 +43,27 @@ public class Sendung {
         this.empfaenger = empfaenger;
     }
 
-    public String getSendungNummer() {
+    public Integer getSendungNummer() {
         return sendungNummer;
     }
 
-    public void setSendungNummer(String sendungNummer) {
+    public void setSendungNummer(Integer sendungNummer) {
         this.sendungNummer = sendungNummer;
     }
 
-    public StandardversandEnum getVersandArt() {
+    public String getVersandArt() {
         return versandArt;
     }
 
-    public void setVersandArt(StandardversandEnum versandArt) {
+    public void setVersandArt(String versandArt) {
         this.versandArt = versandArt;
+    }
+
+    public String getLieferstatus() {
+        return lieferstatus;
+    }
+
+    public void setLieferstatus(String lieferstatus) {
+        this.lieferstatus = lieferstatus;
     }
 }
