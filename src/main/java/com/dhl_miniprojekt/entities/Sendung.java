@@ -1,7 +1,7 @@
 package com.dhl_miniprojekt.entities;
 
 import com.dhl_miniprojekt.model.LieferstatusEnum;
-import com.dhl_miniprojekt.model.StandardversandEnum;
+
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -18,6 +18,7 @@ public class Sendung {
     private String lieferstatus;
     private LocalDate abgabedatum;
     private LocalDate lieferdatum;
+
 
     @ManyToOne
     private Kunde absender;

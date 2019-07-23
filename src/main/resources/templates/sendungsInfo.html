@@ -27,7 +27,7 @@
                     <h1>Sendungssuche</h1>
                 </div>
 
-                <div class="col-md-3 input-field" >
+                <div class="col-md-3 input-field">
                     <input type="text" id="weitereSuche"
                            class="form-control"
                            autocomplete="off"
@@ -47,7 +47,9 @@
 
             </div>
         </div>
-        <div class="search-list">
+
+
+        <div th:if="${gefundeneSendung.getSendungNummer() != null}"  class="search-list">
             <h3>Details zur Sendung:</h3>
             <table class="table" id="myTable">
                 <thead>
@@ -100,8 +102,19 @@
                     <td th:text="${gefundeneSendung.getAbgabedatum()}"></td>
                 </tr>
 
-
                 </tbody>
+            </table>
+
+        </div>
+
+        <div th:unless="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
+            <h3>Details zur Sendung:</h3>
+            <table class="table" id="myTable1">
+                <thead>
+                <tr>
+                    <td>Sendung nicht gefunden</td>
+                    <td>Bitte gib oben erneut eine Sendungsnummer ein oder lass dir helfen!</td>
+
             </table>
 
         </div>

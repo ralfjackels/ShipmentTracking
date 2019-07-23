@@ -68,28 +68,46 @@ public class SendungsController {
     public String vergeleicheSendungsNummer(@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
 
+        Sendung gefundeneSendung = new Sendung();
+
         if (action.equals("Suchen")) {
 
-            Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
-            Sendung gefundeneSendung = optionalSendung.get();
 
-            Kunde empfaenger = gefundeneSendung.getEmpfaenger();
-            Kunde absender = gefundeneSendung.getAbsender();
 
-            model.addAttribute("gefundeneSendung", gefundeneSendung);
-            model.addAttribute("empfaenger", empfaenger);
-            model.addAttribute("absender", absender);
+            if (SendungsRepository.existsById(sendung.getSendungNummer())) {
 
-            return "sendungsInfo";
+                Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
+                gefundeneSendung = optionalSendung.get();
+
+                Kunde empfaenger = gefundeneSendung.getEmpfaenger();
+                Kunde absender = gefundeneSendung.getAbsender();
+
+                model.addAttribute("gefundeneSendung", gefundeneSendung);
+                model.addAttribute("empfaenger", empfaenger);
+                model.addAttribute("absender", absender);
+                return "sendungsInfo";
+
+            } else {
+
+                gefundeneSendung.setSendungNummer(null);
+
+
+                model.addAttribute("gefundeneSendung", gefundeneSendung);
+
+                return "sendungsInfo";
+            }
 
         } else {
 
+            gefundeneSendung.setSendungNummer(null);
 
 
+            model.addAttribute("gefundeneSendung", gefundeneSendung);
 
             return "hilfe";
 
         }
+
 
     }
 
