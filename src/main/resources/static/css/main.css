@@ -654,6 +654,13 @@ legend {
   color: darkseagreen;
 }
 
+
+body{
+  background: url(../image/Search_001.png) no-repeat center center fixed;
+  background-size: cover;
+
+}
+
 .spaceToBottomRJ{
 
     margin-top: 100px;
