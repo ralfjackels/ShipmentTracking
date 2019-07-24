@@ -10,8 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DhlMiniprojektApplicationTests {
 
-    private SendungsController sendungsController = new SendungsController();
-    private SendungsMap sendungsHashMap = new SendungsMap();
+
     @Test
     public void findeVorhandeneSendung() {
 

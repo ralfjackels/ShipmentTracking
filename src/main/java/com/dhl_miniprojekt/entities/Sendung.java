@@ -1,7 +1,5 @@
 package com.dhl_miniprojekt.entities;
 
-import com.dhl_miniprojekt.model.LieferstatusEnum;
-
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -9,16 +7,21 @@ import java.time.LocalDate;
 @Entity
 public class Sendung {
 
-    // Attribute
+    /**
+     * Spring erstellt eine automatisierte ID, die hier als Sendungsnummer benutzt wird.
+     * für die Datenbankanbindung über MariaDB/HeidiSQL wird folgendes Mapping verwendet:
+     * 1 Kunde(Absender/Empfänger) hat viele Sendungen. Eine Sendung hat immer nur 1 Empfänger und 1 Absender.
+     * Schnittstelle ist somit die KundenID
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, nullable = false)
     private Integer sendungNummer;
+
     private String versandArt;
     private String lieferstatus;
     private LocalDate abgabedatum;
     private LocalDate lieferdatum;
-
 
     @ManyToOne
     private Kunde absender;
@@ -26,13 +29,7 @@ public class Sendung {
     @ManyToOne
     private Kunde empfaenger;
 
-//    @ManyToOne
-//    @JoinColumn
-//    private Kunde kunde;
-
-
-
-
+    // Getter & Setter
     public LocalDate getAbgabedatum() {
         return abgabedatum;
     }

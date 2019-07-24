@@ -1,7 +1,5 @@
 package com.dhl_miniprojekt.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,26 +7,32 @@ import java.util.List;
 @Entity
 public class Kunde {
 
-@Id
-@GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(nullable = false, updatable = false)
-private Integer id;
+    /**
+     * Spring erstellt eine automatisierte ID, die hier als Sendungsnummer benutzt wird.
+     * für die Datenbankanbindung über MariaDB/HeidiSQL wird folgendes Mapping verwendet:
+     * 1 Kunde(Absender/Empfänger) hat viele Sendungen. Eine Sendung hat immer nur 1 Empfänger und 1 Absender.
+     * Schnittstelle ist somit die KundenID
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(nullable = false, updatable = false)
+    private Integer id;
 
-private String vorName;
-private String nachName;
-private String strasse;
-private String hausNummer;
-private String plz;
-private String stadt;
-private String land;
+    private String vorName;
+    private String nachName;
+    private String strasse;
+    private String hausNummer;
+    private String plz;
+    private String stadt;
+    private String land;
 
-
-    @OneToMany(mappedBy = "empfaenger") //@ManyToOne bei empfaenger Objekt in Sendung
+    @OneToMany(mappedBy = "empfaenger")
     private List<Sendung> empfaengerListe = new ArrayList<>();
 
-    @OneToMany(mappedBy = "absender") //@ManyToOne bei absender Objekt in Sendung
+    @OneToMany(mappedBy = "absender")
     private List<Sendung> absenderListe = new ArrayList<>();
 
+    // Getter & Setter
     public Integer getId() {
         return id;
     }

@@ -22,129 +22,124 @@
     <div class="s01 s02">
         <form th:action="@{/sendungsSuche}"
               th:object="${neueSendung}" method="post">
-
-
             <div class="inner-form">
-
                 <div class="input-field first-wrap">
                     <input id="search" type="text"
                            autocomplete="off"
-                           placeholder="Sendungsnummer" th:field="*{sendungNummer}"
+                           placeholder="Sendungsnummer" th:field="*{versandArt}"
                            autofocus required minlength="1" maxlength="2"
                            oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"
                            oninput="setCustomValidity('')"
                            onfocus="this.value=''"/>
                 </div>
-
                 <div class="input-field third-wrap">
                     <button name="action" value="Suchen" class="btn-search">Suchen</button>
                 </div>
-                
             </div>
         </form>
 
 
     </div>
-<!--    <form th:action="@{/sendungsInfo}"-->
-<!--          th:object="${neueSendung}" method="post">-->
+    <!--    <form th:action="@{/sendungsInfo}"-->
+    <!--          th:object="${neueSendung}" method="post">-->
 
-<!--        &lt;!&ndash;    Erste Suche &ndash;&gt;-->
-<!--        <div class="search-box">-->
+    <!--        &lt;!&ndash;    Erste Suche &ndash;&gt;-->
+    <!--        <div class="search-box">-->
 
-<!--            <fieldset>-->
-<!--                <legend>Sendungssuche</legend>-->
-<!--            </fieldset>-->
+    <!--            <fieldset>-->
+    <!--                <legend>Sendungssuche</legend>-->
+    <!--            </fieldset>-->
 
-<!--                <div class="input-field" align="center">-->
-<!--                    <input type="text" id="weitereSuche"-->
-<!--                           class="form-control"-->
-<!--                           autocomplete="off"-->
-<!--                           value=""-->
-<!--                           placeholder="Weitere Sendungen?"-->
-<!--                           th:field="*{sendungNummer}"-->
-<!--                           autofocus required minlength="1" maxlength="1"-->
-<!--                           oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"-->
-<!--                           oninput="setCustomValidity('')"/>-->
-<!--                </div>-->
+    <!--                <div class="input-field" align="center">-->
+    <!--                    <input type="text" id="weitereSuche"-->
+    <!--                           class="form-control"-->
+    <!--                           autocomplete="off"-->
+    <!--                           value=""-->
+    <!--                           placeholder="Weitere Sendungen?"-->
+    <!--                           th:field="*{sendungNummer}"-->
+    <!--                           autofocus required minlength="1" maxlength="1"-->
+    <!--                           oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"-->
+    <!--                           oninput="setCustomValidity('')"/>-->
+    <!--                </div>-->
 
-<!--                <div>-->
-<!--                    <button class="btn-search btn-primary justify-content">Suche</button>-->
+    <!--                <div>-->
+    <!--                    <button class="btn-search btn-primary justify-content">Suche</button>-->
 
-<!--                </div>-->
-<!--        </div>-->
-
-
-        <div th:if="${gefundeneSendung.getSendungNummer() != null}"  class="search-list">
-            <h3>Details zur Sendung:</h3>
-            <table class="table" id="myTable">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                </tr>
-                </thead>
-                <tbody>
+    <!--                </div>-->
+    <!--        </div>-->
 
 
-                <tr>
-                    <td>Sendungsnummer</td>
-                    <td th:text="${gefundeneSendung.getSendungNummer()}"></td>
-                </tr>
-                <tr>
-                    <td>Lieferstatus</td>
-                    <td th:text="${gefundeneSendung.getLieferstatus()}"></td>
-                </tr>
-                <tr>
-                    <td>Lieferzeitpunkt</td>
-                    <td th:utext="${gefundeneSendung.getLieferdatum()}"></td>
-                </tr>
-                <tr>
-                    <td>Lieferadresse</td>
+    <div th:if="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
+        <h3>Details zur Sendung:</h3>
+        <table class="table" id="myTable">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+            </tr>
+            </thead>
+            <tbody>
 
-                    <td th:utext="${empfaenger.getVorName() + ' ' + empfaenger.getNachName() +
+
+            <tr>
+                <td>Sendungsnummer</td>
+                <td th:text="${gefundeneSendung.getSendungNummer()}"></td>
+            </tr>
+            <tr>
+                <td>Lieferstatus</td>
+                <td th:text="${gefundeneSendung.getLieferstatus()}"></td>
+            </tr>
+            <tr>
+                <td>Lieferzeitpunkt</td>
+                <td th:utext="${gefundeneSendung.getLieferdatum()}"></td>
+            </tr>
+            <tr>
+                <td>Lieferadresse</td>
+
+                <td th:utext="${empfaenger.getVorName() + ' ' + empfaenger.getNachName() +
                 '<br>' + empfaenger.getStrasse() +
                 ' ' + empfaenger.getHausNummer() +
                 '<br>' + empfaenger.getPlz() +
                 ' ' + empfaenger.getStadt() +
                 '<br>' + empfaenger.getLand()}"></td>
 
-                </tr>
-                <tr>
-                    <td>Versandart</td>
-                    <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>
-                </tr>
-                <tr>
+            </tr>
+            <tr>
+                <td>Versandart</td>
+                <td th:text="${gefundeneSendung.getVersandArt().toString()}"></td>
+            </tr>
+            <tr>
 
-                    <td>Absender</td>
-                    <td th:utext="${absender.getVorName()  + ' ' + absender.getNachName()  + ' ' +
+                <td>Absender</td>
+                <td th:utext="${absender.getVorName()  + ' ' + absender.getNachName()  + ' ' +
 
                 '<br>' + absender.getStrasse() + ' ' + absender.getHausNummer() +
                 '<br>' + absender.getPlz() + ' ' + absender.getStadt() +
                 '<br>' +  absender.getLand()}"></td>
-                </tr>
-                <tr>
-                    <td>Paketabgabe</td>
-                    <td th:text="${gefundeneSendung.getAbgabedatum()}"></td>
-                </tr>
+            </tr>
+            <tr>
+                <td>Paketabgabe</td>
+                <td th:text="${gefundeneSendung.getAbgabedatum()}"></td>
+            </tr>
 
-                </tbody>
-            </table>
+            </tbody>
+        </table>
 
-        </div>
+    </div>
 
-        <div th:unless="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
-            <h3>Details zur Sendung:</h3>
-            <table class="table" id="myTable1">
-                <thead>
-                <tr>
-                    <td>Sendung nicht gefunden</td>
-                    <td>Bitte geben Sie oben erneut eine Sendungsnummer ein oder lassen Sie sich helfen.</td>
-                    <tr>
-                        <a th:href="@{/hilfe}">Hilfe?</a>
-                        </tr>
-            </table>
+    <div th:unless="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
+        <h3>Details zur Sendung:</h3>
+        <table class="table" id="myTable1">
+            <thead>
+            <tr>
+                <td>Sendung nicht gefunden</td>
+                <td>Bitte geben Sie oben erneut eine Sendungsnummer ein oder lassen Sie sich helfen.</td>
+            <tr>
+                <a th:href="@{/hilfe}">Hilfe?</a>
+            </tr>
+        </table>
 
-        </div>
+    </div>
     </form>
 </div>
 

@@ -2,8 +2,7 @@ package com.dhl_miniprojekt;
 
 import com.dhl_miniprojekt.entities.Kunde;
 import com.dhl_miniprojekt.entities.Sendung;
-import com.dhl_miniprojekt.model.SendungsMap;
-import com.dhl_miniprojekt.repositories.KundeRepository;
+
 import com.dhl_miniprojekt.repositories.SendungsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,36 +10,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
 /**
- *
+ * In dieser Klasse passiert die Steuerung der Webanwendung.
  */
 @Controller
 public class SendungsController {
 
-//    SendungsMap sendungsliste = new SendungsMap();
-
-    @Autowired
-    private KundeRepository kundeRepository;
-
     @Autowired
     private SendungsRepository SendungsRepository;
 
-    private SendungsMap sendungsHashMap = new SendungsMap();
-
-
-    // Konstruktor
-    public SendungsController() {
-    }
-
-
-    // Methoden
-    public void fuegeSendungHinzu() {
-        // TODO implement here
-    }
+//    Für zukünftige Erweiterungen:
+//    @Autowired
+//    private KundeRepository kundeRepository;
 
     /**
      * Zeigt die Startseite an und erstellt ein neues Objekt Sendung im Model
@@ -53,86 +37,59 @@ public class SendungsController {
         return "sendungsSuche";
     }
 
-
     /**
-     * Prüft ob die Sendung mit der Sendungsnummer vorhanden ist und ruft die nächste Seite auf
-     *
-     * @param model
-     * @param sendung
-     * @return
+     * Bearbeitet die Nutzereingabe über das Formular.
+     * Über Thymeleaf wird absichtlich die Versandart eingegeben, um eine NumberFormatException zu umgehen..
      */
-
-
-
     @PostMapping(value = "/sendungsSuche")
-    public String vergeleicheSendungsNummer(@RequestParam String action, Model model, @ModelAttribute("neueSendung") Sendung sendung) {
+    public String bearbeiteEingabe(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
         Sendung gefundeneSendung = new Sendung();
 
-        if (action.equals("Suchen")) {
+        // Falls die Eingabe
+        if (sendung.getVersandArt().matches("[0-9]+")) {
 
-            if (SendungsRepository.existsById(sendung.getSendungNummer())) {
+            return vergleicheSendungsNummer(model, sendung, gefundeneSendung);
 
-                Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
-                gefundeneSendung = optionalSendung.get();
+        } else {
+            // Falls die Eingabe nicht nur aus Zahlen besteht, wird
+            return setzeSendungsNummeraufNull(model, gefundeneSendung);
+        }
+    }
 
-                Kunde empfaenger = gefundeneSendung.getEmpfaenger();
-                Kunde absender = gefundeneSendung.getAbsender();
+    /**
+     * Diese Methode überprüft, ob die Sendungsnummer in der Datenbank vorhanden ist und gibt entweder ein leeres
+     * Sendungsobjekt zurück oder ein mit Daten aus der Datenbank befülltes Objekt.
+     */
+    private String vergleicheSendungsNummer(Model model, @ModelAttribute("neueSendung") Sendung sendung, Sendung gefundeneSendung) {
 
-                model.addAttribute("gefundeneSendung", gefundeneSendung);
-                model.addAttribute("empfaenger", empfaenger);
-                model.addAttribute("absender", absender);
+        sendung.setSendungNummer(Integer.parseInt(sendung.getVersandArt()));
 
-                return "sendungsInfo";
+        // Überprüft ob die eingegebene Sendungsnummer in der Datenbank enthalten ist
+        if (SendungsRepository.existsById(sendung.getSendungNummer())) {
 
-            } else {
+            Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
+            gefundeneSendung = optionalSendung.get();
 
-                gefundeneSendung.setSendungNummer(null);
+            // Empfänger und Absender Objekte werden erstellt, um auf der html-Seite auf die Attribute zugreifen zu können
+            Kunde empfaenger = gefundeneSendung.getEmpfaenger();
+            Kunde absender = gefundeneSendung.getAbsender();
 
+            model.addAttribute("gefundeneSendung", gefundeneSendung);
+            model.addAttribute("empfaenger", empfaenger);
+            model.addAttribute("absender", absender);
 
-                model.addAttribute("gefundeneSendung", gefundeneSendung);
-
-
-                return "sendungsInfo";
-            }
+            return "sendungsInfo";
 
         } else {
 
-
-
-            return "hilfe";
-
+            return setzeSendungsNummeraufNull(model, gefundeneSendung);
         }
-
-
-
     }
 
-
-//    Weitere Suchanfragen auf sendungsSuche.Info
-
-
-    @GetMapping(value = "/sendungsInfo")
-    public String sucheWeitereSendungsnummer(Model model) {
-
-        model.addAttribute("neueSendung", new Sendung());
-
-        return "sendungsInfo";
-    }
-
-
-    @PostMapping(value = "/sendungsInfo")
-    public String vergleicheWeitereSendungsnummer(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
-//
-//        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
-//        model.addAttribute("gefundeneSendung", gefundeneSendung);
-
-        return "sendungsInfo";
-    }
-
-
-// Hilfe
-
+    /**
+     * Zeigt die Hilfeseite an
+     */
     @GetMapping(value = "/hilfe")
     public String zeigeHilfeseiteAn(Model model) {
 
@@ -142,34 +99,14 @@ public class SendungsController {
     }
 
     /**
-     * Findet die korrekte Sendung. Falls keine Sendung gefunden wurde, wird ein PopUp angezeigt
-     * @param sendungNummer des im Model eingestellten Objekts
-     * @return
+     * Diese Methode setzte die Sendungsnummer der gefundenen Sendung auf null und zeigt th:unless in der
+     * sendungsInfo.html an
      */
-//    private Sendung findeSendung(@RequestParam("sendungNummer") String sendungNummer) {
-//
-//        Sendung gefundeneSendung = new Sendung();
-//
-//        if (sendungsHashMap.getSendungslisteMap().containsKey(sendungNummer)){
-//
-//            gefundeneSendung.setSendungNummer(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getSendungNummer());
-//            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
-//            gefundeneSendung.setLieferAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferAdresse());
-//            gefundeneSendung.setAbgabeZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getAbgabeZeitpunkt());
-//            gefundeneSendung.setLieferstatusEnum(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferstatusEnum());
-//            gefundeneSendung.setStartAdresse(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getStartAdresse());
-//            gefundeneSendung.setVersandArt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getVersandArt());
-//            gefundeneSendung.setLieferZeitpunkt(sendungsHashMap.getSendungslisteMap().get(sendungNummer).getLieferZeitpunkt());
-//
-//        } else {
-//            // TODO schreibe Methode
-//            //zeigePopUp();
-//
-//        }
-//        return gefundeneSendung;
-//    }
+    private String setzeSendungsNummeraufNull(Model model, Sendung gefundeneSendung) {
+        gefundeneSendung.setSendungNummer(null);
 
+        model.addAttribute("gefundeneSendung", gefundeneSendung);
 
+        return "sendungsInfo";
+    }
 }
-
-
