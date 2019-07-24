@@ -4,6 +4,7 @@ package com.dhl_miniprojekt;
 import com.dhl_miniprojekt.entities.Sendung;
 import com.dhl_miniprojekt.repositories.SendungsRepository;
 import com.dhl_miniprojekt.services.SendungsService;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,12 +36,12 @@ public class SendungsServiceTest {
 
         // Testdaten vorbereiten
         Sendung sendung = new Sendung();
-        Optional<Sendung> optionalSendung = new Optional<>();
         sendung.setVersandArt("1");
 
         // Mockingverhalten definieren
         Mockito.when(sendungsRepository.existsById(Integer.valueOf(1))).thenReturn(true);
-        Mockito.when(sendungsRepository.findById(1)).thenReturn(optionalSendung);
+
+        Mockito.when(sendungsRepository.findById(1)).thenReturn(Optional.of(sendung));
 
         // Logik ausführen
         Sendung pruefeSendung = sendungsService.pruefeSendung(sendung);
