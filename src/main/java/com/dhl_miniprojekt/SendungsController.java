@@ -2,7 +2,8 @@ package com.dhl_miniprojekt;
 
 import com.dhl_miniprojekt.entities.Kunde;
 import com.dhl_miniprojekt.entities.Sendung;
-
+import com.dhl_miniprojekt.model.SendungsMap;
+import com.dhl_miniprojekt.repositories.KundeRepository;
 import com.dhl_miniprojekt.repositories.SendungsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
