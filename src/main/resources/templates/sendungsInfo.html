@@ -49,14 +49,10 @@
 
         <div th:if="${gefundeneSendung.getSendungNummer() != null}"  class="search-list">
             <h3>Details zur Sendung:</h3>
+
             <table class="table" id="myTable">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                </tr>
-                </thead>
-                <tbody>
+
+
 
 
                 <tr>
@@ -100,16 +96,16 @@
                     <td th:text="${gefundeneSendung.getAbgabedatum()}"></td>
                 </tr>
 
-                </tbody>
+
             </table>
 
         </div>
 
         <div th:unless="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
-            <h3 align="center">Sendung nicht gefunden?</h3>
+            <h5 align="center" >Sendung nicht gefunden?</h5>
             <table class="table" id="myTable1">
                 <tr align="center">
-                    <td class="h5">Besuchen Sie unsere <a th:href="@{/hilfe}">Hilfe</a>-Seite.</td>
+                    <td h5>Versuchen Sie es erneut oder nutzen Sie unsere <a th:href="@{/hilfe}">Hilfe</a>-Seite.</td>
 
             </table>
 
