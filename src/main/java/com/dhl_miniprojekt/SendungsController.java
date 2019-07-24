@@ -5,6 +5,7 @@ import com.dhl_miniprojekt.entities.Sendung;
 
 import com.dhl_miniprojekt.repositories.KundeRepository;
 import com.dhl_miniprojekt.repositories.SendungsRepository;
+import com.dhl_miniprojekt.services.SendungsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,7 @@ import java.util.Optional;
 public class SendungsController {
 
     @Autowired
-    private SendungsRepository SendungsRepository;
-
+    SendungsService sendungsService;
 //    Für zukünftige Erweiterungen:
 //    @Autowired
 //    private KundeRepository kundeRepository;
@@ -47,33 +47,16 @@ public class SendungsController {
     @PostMapping(value = "/sendungsSuche")
     public String bearbeiteEingabe(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
-        Sendung gefundeneSendung = new Sendung();
-        // Falls die Sendung nicht gefunden wurde, wird die Sendungsnummer auf null gesetzt,
-        // um die Thymeleaf th:if und th:unless in der html-Seite ausführen zu können.
-        gefundeneSendung.setSendungNummer(null);
-
-       if (sendung.getVersandArt().matches("[0-9]+")) {
-
-            sendung.setSendungNummer(Integer.parseInt(sendung.getVersandArt()));
-
-           // Überprüft ob die eingegebene Sendungsnummer in der Datenbank enthalten ist
-           if (SendungsRepository.existsById(sendung.getSendungNummer())) {
-
-               Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
-               gefundeneSendung = optionalSendung.get();
-           }
-       }
+        Sendung gefundeneSendung = sendungsService.pruefeSendung(sendung);
 
         model.addAttribute("gefundeneSendung", gefundeneSendung);
+
         return "sendungsInfo";
 
     }
 
     /**
      * Zeigt die Hilfeseite an
-     *
-     * @param model
-     * @return
      */
     @GetMapping(value = "/hilfe")
     public String zeigeHilfeseiteAn(Model model) {
