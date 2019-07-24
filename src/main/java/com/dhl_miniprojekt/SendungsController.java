@@ -11,7 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.Optional;
 
@@ -41,56 +40,40 @@ public class SendungsController {
 
     /**
      * Bearbeitet die Nutzereingabe über das Formular.
-     * Über Thymeleaf wird absichtlich die Versandart eingegeben, um eine NumberFormatException zu umgehen..
+     * Über Thymeleaf wird absichtlich die Versandart eingegeben, um die Nutzereingabe als String verarbeiten zu können.
+     *
+     * @param sendung wird erstellt um die eingegebene Sendungsnummer einzuspeichern
      */
     @PostMapping(value = "/sendungsSuche")
     public String bearbeiteEingabe(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
 
         Sendung gefundeneSendung = new Sendung();
+        // Falls die Sendung nicht gefunden wurde, wird die Sendungsnummer auf null gesetzt,
+        // um die Thymeleaf th:if und th:unless in der html-Seite ausführen zu können.
+        gefundeneSendung.setSendungNummer(null);
 
-        // Falls die Eingabe
-        if (sendung.getVersandArt().matches("[0-9]+")) {
+       if (sendung.getVersandArt().matches("[0-9]+")) {
 
-            return vergleicheSendungsNummer(model, sendung, gefundeneSendung);
+            sendung.setSendungNummer(Integer.parseInt(sendung.getVersandArt()));
 
-        } else {
-            // Falls die Eingabe nicht nur aus Zahlen besteht, wird
-            return setzeSendungsNummeraufNull(model, gefundeneSendung);
-        }
-    }
+           // Überprüft ob die eingegebene Sendungsnummer in der Datenbank enthalten ist
+           if (SendungsRepository.existsById(sendung.getSendungNummer())) {
 
-    /**
-     * Diese Methode überprüft, ob die Sendungsnummer in der Datenbank vorhanden ist und gibt entweder ein leeres
-     * Sendungsobjekt zurück oder ein mit Daten aus der Datenbank befülltes Objekt.
-     */
-    private String vergleicheSendungsNummer(Model model, @ModelAttribute("neueSendung") Sendung sendung, Sendung gefundeneSendung) {
+               Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
+               gefundeneSendung = optionalSendung.get();
+           }
+       }
 
-        sendung.setSendungNummer(Integer.parseInt(sendung.getVersandArt()));
+        model.addAttribute("gefundeneSendung", gefundeneSendung);
+        return "sendungsInfo";
 
-        // Überprüft ob die eingegebene Sendungsnummer in der Datenbank enthalten ist
-        if (SendungsRepository.existsById(sendung.getSendungNummer())) {
-
-            Optional<Sendung> optionalSendung = SendungsRepository.findById(sendung.getSendungNummer());
-            gefundeneSendung = optionalSendung.get();
-
-            // Empfänger und Absender Objekte werden erstellt, um auf der html-Seite auf die Attribute zugreifen zu können
-            Kunde empfaenger = gefundeneSendung.getEmpfaenger();
-            Kunde absender = gefundeneSendung.getAbsender();
-
-            model.addAttribute("gefundeneSendung", gefundeneSendung);
-            model.addAttribute("empfaenger", empfaenger);
-            model.addAttribute("absender", absender);
-
-            return "sendungsInfo";
-
-        } else {
-
-            return setzeSendungsNummeraufNull(model, gefundeneSendung);
-        }
     }
 
     /**
      * Zeigt die Hilfeseite an
+     *
+     * @param model
+     * @return
      */
     @GetMapping(value = "/hilfe")
     public String zeigeHilfeseiteAn(Model model) {
@@ -100,15 +83,5 @@ public class SendungsController {
         return "hilfe";
     }
 
-    /**
-     * Diese Methode setzte die Sendungsnummer der gefundenen Sendung auf null und zeigt th:unless in der
-     * sendungsInfo.html an
-     */
-    private String setzeSendungsNummeraufNull(Model model, Sendung gefundeneSendung) {
-        gefundeneSendung.setSendungNummer(null);
 
-        model.addAttribute("gefundeneSendung", gefundeneSendung);
-
-        return "sendungsInfo";
-    }
 }

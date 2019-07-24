@@ -1,6 +1,6 @@
 package com.dhl_miniprojekt;
 
-import com.dhl_miniprojekt.model.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;

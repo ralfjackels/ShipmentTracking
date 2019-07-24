@@ -29,7 +29,7 @@
                 <div class="input-field first-wrap">
                     <input id="search" type="text"
                            autocomplete="off"
-                           placeholder="Sendungsnummer" th:field="*{sendungNummer}"
+                           placeholder="Sendungsnummer" th:field="*{versandArt}"
                            autofocus required minlength="1" maxlength="2"
                            oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"
                            oninput="setCustomValidity('')"
@@ -70,12 +70,12 @@
                 <tr>
                     <td>Lieferadresse</td>
 
-                    <td th:utext="${empfaenger.getVorName() + ' ' + empfaenger.getNachName() +
-                '<br>' + empfaenger.getStrasse() +
-                ' ' + empfaenger.getHausNummer() +
-                '<br>' + empfaenger.getPlz() +
-                ' ' + empfaenger.getStadt() +
-                '<br>' + empfaenger.getLand()}"></td>
+                    <td th:utext="${gefundeneSendung.empfaenger.getVorName() + ' ' + gefundeneSendung.empfaenger.getNachName() +
+                '<br>' + gefundeneSendung.empfaenger.getStrasse() +
+                ' ' + gefundeneSendung.empfaenger.getHausNummer() +
+                '<br>' + gefundeneSendung.empfaenger.getPlz() +
+                ' ' + gefundeneSendung.empfaenger.getStadt() +
+                '<br>' + gefundeneSendung.empfaenger.getLand()}"></td>
 
                 </tr>
                 <tr>
@@ -85,11 +85,11 @@
                 <tr>
 
                     <td>Absender</td>
-                    <td th:utext="${absender.getVorName()  + ' ' + absender.getNachName()  + ' ' +
+                    <td th:utext="${gefundeneSendung.absender.getVorName()  + ' ' + gefundeneSendung.absender.getNachName()  + ' ' +
 
-                '<br>' + absender.getStrasse() + ' ' + absender.getHausNummer() +
-                '<br>' + absender.getPlz() + ' ' + absender.getStadt() +
-                '<br>' +  absender.getLand()}"></td>
+                '<br>' + gefundeneSendung.absender.getStrasse() + ' ' + gefundeneSendung.absender.getHausNummer() +
+                '<br>' + gefundeneSendung.absender.getPlz() + ' ' + gefundeneSendung.absender.getStadt() +
+                '<br>' +  gefundeneSendung.absender.getLand()}"></td>
                 </tr>
                 <tr>
                     <td>Paketabgabe</td>
