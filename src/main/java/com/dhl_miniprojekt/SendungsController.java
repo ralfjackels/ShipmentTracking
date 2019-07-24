@@ -109,26 +109,26 @@ public class SendungsController {
     }
 
 
-//    Weitere Suchanfragen auf sendungsSuche.Info
-
-
-    @GetMapping(value = "/sendungsInfo")
-    public String sucheWeitereSendungsnummer(Model model) {
-
-        model.addAttribute("neueSendung", new Sendung());
-
-        return "sendungsInfo";
-    }
-
-
-    @PostMapping(value = "/sendungsInfo")
-    public String vergleicheWeitereSendungsnummer(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
+////    Weitere Suchanfragen auf sendungsSuche.Info
 //
-//        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
-//        model.addAttribute("gefundeneSendung", gefundeneSendung);
-
-        return "sendungsInfo";
-    }
+//
+//    @GetMapping(value = "/sendungsInfo")
+//    public String sucheWeitereSendungsnummer(Model model) {
+//
+//        model.addAttribute("neueSendung", new Sendung());
+//
+//        return "sendungsInfo";
+//    }
+//
+//
+//    @PostMapping(value = "/sendungsInfo")
+//    public String vergleicheWeitereSendungsnummer(Model model, @ModelAttribute("neueSendung") Sendung sendung) {
+////
+////        Sendung gefundeneSendung = findeSendung(sendung.getSendungNummer());
+////        model.addAttribute("gefundeneSendung", gefundeneSendung);
+//
+//        return "sendungsInfo";
+//    }
 
 
 // Hilfe

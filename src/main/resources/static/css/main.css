@@ -472,7 +472,7 @@ legend {
   -ms-flex-align: center;
       align-items: center;
   font-family: 'Roboto', sans-serif;
-  background: url("../image/Search_001.png");
+  /*background: url("../image/Search_001.png");*/
   background-size: cover;
   background-position: center center;
   padding: 15px;
@@ -656,7 +656,7 @@ legend {
 
 
 body{
-  background: url(../image/Search_001.png) no-repeat center center fixed;
+  background: url(../image/paket.jpg) no-repeat center center fixed;
   background-size: cover;
 
 }

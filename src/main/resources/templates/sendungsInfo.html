@@ -45,33 +45,6 @@
 
 
     </div>
-<!--    <form th:action="@{/sendungsInfo}"-->
-<!--          th:object="${neueSendung}" method="post">-->
-
-<!--        &lt;!&ndash;    Erste Suche &ndash;&gt;-->
-<!--        <div class="search-box">-->
-
-<!--            <fieldset>-->
-<!--                <legend>Sendungssuche</legend>-->
-<!--            </fieldset>-->
-
-<!--                <div class="input-field" align="center">-->
-<!--                    <input type="text" id="weitereSuche"-->
-<!--                           class="form-control"-->
-<!--                           autocomplete="off"-->
-<!--                           value=""-->
-<!--                           placeholder="Weitere Sendungen?"-->
-<!--                           th:field="*{sendungNummer}"-->
-<!--                           autofocus required minlength="1" maxlength="1"-->
-<!--                           oninvalid="setCustomValidity('Bitte geben Sie eine gültige Sendungsnummer ein')"-->
-<!--                           oninput="setCustomValidity('')"/>-->
-<!--                </div>-->
-
-<!--                <div>-->
-<!--                    <button class="btn-search btn-primary justify-content">Suche</button>-->
-
-<!--                </div>-->
-<!--        </div>-->
 
 
         <div th:if="${gefundeneSendung.getSendungNummer() != null}"  class="search-list">
@@ -133,15 +106,11 @@
         </div>
 
         <div th:unless="${gefundeneSendung.getSendungNummer() != null}" class="search-list">
-            <h3>Details zur Sendung:</h3>
+            <h3 align="center">Sendung nicht gefunden?</h3>
             <table class="table" id="myTable1">
-                <thead>
-                <tr>
-                    <td>Sendung nicht gefunden</td>
-                    <td>Bitte geben Sie oben erneut eine Sendungsnummer ein oder lassen Sie sich helfen.</td>
-                    <tr>
-                        <a th:href="@{/hilfe}">Hilfe?</a>
-                        </tr>
+                <tr align="center">
+                    <td class="h5">Besuchen Sie unsere <a th:href="@{/hilfe}">Hilfe</a>-Seite.</td>
+
             </table>
 
         </div>
