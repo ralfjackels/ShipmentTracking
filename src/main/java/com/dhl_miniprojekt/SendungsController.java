@@ -2,7 +2,7 @@ package com.dhl_miniprojekt;
 
 import com.dhl_miniprojekt.entities.Kunde;
 import com.dhl_miniprojekt.entities.Sendung;
-import com.dhl_miniprojekt.model.SendungsMap;
+
 import com.dhl_miniprojekt.repositories.KundeRepository;
 import com.dhl_miniprojekt.repositories.SendungsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
