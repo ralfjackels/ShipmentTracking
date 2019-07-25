@@ -5,6 +5,7 @@ import com.dhl_miniprojekt.repositories.SendungsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -33,6 +34,20 @@ public class SendungsService {
                 gefundeneSendung = optionalSendung.get();
             }
         }
+
+        formattiereDatum(gefundeneSendung);
+
         return gefundeneSendung;
+    }
+
+    /**
+     * Formattiert Lieferdatum und Abgabedatum für die Anzeige auf der Html
+     */
+    private void formattiereDatum(Sendung gefundeneSendung) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
+
+        gefundeneSendung.setFormattiertesAbgabedatum(gefundeneSendung.getAbgabedatum().format(formatter));
+        gefundeneSendung.setFormattiertesLieferdatum(gefundeneSendung.getLieferdatum().format(formatter));
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @SpringBootApplication
 public class DhlMiniprojektApplication {
@@ -18,16 +19,15 @@ public class DhlMiniprojektApplication {
         SpringApplication.run(DhlMiniprojektApplication.class, args);
     }
 
-    /**
-     * Automatische Erstellung und Befüllung der Datenbank über Spring.
-     */
     @Autowired
     private KundeRepository kundeRepository;
 
     @Autowired
     private SendungsRepository sendungsRepository;
 
-
+    /**
+     * Automatische Erstellung und Befüllung der Datenbank über Spring.
+     */
     @PostConstruct
     public void befuelleDatenbank() {
 
@@ -69,6 +69,4 @@ public class DhlMiniprojektApplication {
         sendungsRepository.save(sendung2);
         sendungsRepository.save(sendung3);
     }
-
-
 }

@@ -2,6 +2,7 @@ package com.dhl_miniprojekt.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @Entity
 public class Sendung {
@@ -21,6 +22,9 @@ public class Sendung {
     private String lieferstatus;
     private LocalDate abgabedatum;
     private LocalDate lieferdatum;
+
+    private String formattiertesAbgabedatum;
+    private String formattiertesLieferdatum;
 
     @ManyToOne
     private Kunde absender;
@@ -48,6 +52,22 @@ public class Sendung {
 
     public void setAbgabedatum(LocalDate abgabedatum) {
         this.abgabedatum = abgabedatum;
+    }
+
+    public void setFormattiertesAbgabedatum(String formattiertesAbgabedatum) {
+        this.formattiertesAbgabedatum = formattiertesAbgabedatum;
+    }
+
+    public void setFormattiertesLieferdatum(String formattiertesLieferdatum) {
+        this.formattiertesLieferdatum = formattiertesLieferdatum;
+    }
+
+    public String getFormattiertesAbgabedatum() {
+        return formattiertesAbgabedatum;
+    }
+
+    public String getFormattiertesLieferdatum() {
+        return formattiertesLieferdatum;
     }
 
     public LocalDate getLieferdatum() {

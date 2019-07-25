@@ -62,7 +62,7 @@
                 </tr>
                 <tr>
                     <td>Lieferzeitpunkt</td>
-                    <td th:utext="${gefundeneSendung.getLieferdatum()}"></td>
+                    <td th:utext="${gefundeneSendung.getFormattiertesLieferdatum()}"></td>
                 </tr>
                 <tr>
                     <td>Lieferadresse</td>
@@ -90,7 +90,7 @@
                 </tr>
                 <tr>
                     <td>Paketabgabe</td>
-                    <td th:text="${gefundeneSendung.getAbgabedatum()}"></td>
+                    <td th:text="${gefundeneSendung.getFormattiertesAbgabedatum()}"></td>
                 </tr>
 
 
