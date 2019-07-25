@@ -13,7 +13,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+
+import static org.hamcrest.CoreMatchers.is;
+
 
 /**
  * Logik in der SendungsService Klasse wird getestet.
@@ -27,6 +32,9 @@ public class SendungsServiceTest {
     @InjectMocks
     private SendungsService sendungsService;
 
+    @InjectMocks
+    private Sendung sendung = new Sendung();
+
     /**
      * Dieser Test prüft das korrekte Verhalten bei Eingabe einer korrekten Sendungsnummer.
      */
@@ -35,12 +43,12 @@ public class SendungsServiceTest {
         MockitoAnnotations.initMocks(this);
 
         // Testdaten vorbereiten
-        Sendung sendung = new Sendung();
         sendung.setVersandArt("1");
+        sendung.setAbgabedatum(LocalDate.now());
+        sendung.setLieferdatum(LocalDate.now().plusDays(2));
 
         // Mockingverhalten definieren
         Mockito.when(sendungsRepository.existsById(Integer.valueOf(1))).thenReturn(true);
-
         Mockito.when(sendungsRepository.findById(1)).thenReturn(Optional.of(sendung));
 
         // Logik ausführen
@@ -60,7 +68,6 @@ public class SendungsServiceTest {
         MockitoAnnotations.initMocks(this);
 
         // Testdaten vorbereiten
-        Sendung sendung = new Sendung();
         sendung.setVersandArt("899");
 
         // Mockingverhalten definieren
@@ -81,7 +88,6 @@ public class SendungsServiceTest {
         MockitoAnnotations.initMocks(this);
 
         // Testdaten vorbereiten
-        Sendung sendung = new Sendung();
         sendung.setVersandArt("b");
 
         // Logik ausführen
@@ -90,4 +96,25 @@ public class SendungsServiceTest {
         // Ergebnis überprüfen
         Assert.assertNull(pruefeSendung.getSendungNummer());
     }
+
+    /**
+     * Dieser prüft ob das Datum richtig formattiert wurde.
+     */
+    @Test
+    public void pruefeDatumsFormattierung() {
+        MockitoAnnotations.initMocks(this);
+
+        sendung.setVersandArt("1");
+        sendung.setAbgabedatum(LocalDate.of(2019, 7,25));
+        sendung.setLieferdatum(LocalDate.of(2019, 7,26));
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
+
+        sendungsService.formattiereDatum(sendung);
+
+        Assert.assertThat(sendung.getAbgabedatum().format(formatter), is("Donnerstag, 25. Juli 2019"));
+        Assert.assertThat(sendung.getLieferdatum().format(formatter), is("Freitag, 26. Juli 2019"));
+
+    }
+
 }

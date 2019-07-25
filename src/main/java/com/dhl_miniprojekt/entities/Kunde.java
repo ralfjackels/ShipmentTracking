@@ -44,7 +44,6 @@ public class Kunde {
         this.plz = plz;
         this.stadt = stadt;
         this.land = land;
-
     }
 
     // Getter & Setter

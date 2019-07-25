@@ -42,7 +42,7 @@ public class SendungsService {
     /**
      * Formattiert Lieferdatum und Abgabedatum für die Anzeige auf der Html
      */
-    private void formattiereDatum(Sendung gefundeneSendung) {
+    public void formattiereDatum(Sendung gefundeneSendung) {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
 
