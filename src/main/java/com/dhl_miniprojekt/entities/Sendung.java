@@ -1,6 +1,5 @@
 package com.dhl_miniprojekt.entities;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 

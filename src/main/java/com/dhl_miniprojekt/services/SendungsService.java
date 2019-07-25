@@ -13,11 +13,14 @@ public class SendungsService {
     @Autowired
     private SendungsRepository sendungsRepository;
 
+    /**
+     * Prüft die Nutzereingabe. Über Thymeleaf wird absichtlich die Versandart eingegeben,
+     * um die Nutzereingabe als String verarbeiten zu können.
+     */
+
     public Sendung pruefeSendung(Sendung sendung){
 
         Sendung gefundeneSendung = new Sendung();
-        // Falls die Sendung nicht gefunden wurde, wird die Sendungsnummer auf null gesetzt,
-        // um die Thymeleaf th:if und th:unless in der html-Seite ausführen zu können.
         gefundeneSendung.setSendungNummer(null);
 
         if (sendung.getVersandArt().matches("[0-9]+")) {

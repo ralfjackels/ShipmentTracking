@@ -1,10 +1,6 @@
 package com.dhl_miniprojekt;
 
-import com.dhl_miniprojekt.entities.Kunde;
 import com.dhl_miniprojekt.entities.Sendung;
-
-import com.dhl_miniprojekt.repositories.KundeRepository;
-import com.dhl_miniprojekt.repositories.SendungsRepository;
 import com.dhl_miniprojekt.services.SendungsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Optional;
 
 /**
  * In dieser Klasse passiert die Steuerung der Webanwendung.
@@ -41,7 +36,6 @@ public class SendungsController {
     /**
      * Bearbeitet die Nutzereingabe über das Formular.
      * Über Thymeleaf wird absichtlich die Versandart eingegeben, um die Nutzereingabe als String verarbeiten zu können.
-     *
      * @param sendung wird erstellt um die eingegebene Sendungsnummer einzuspeichern
      */
     @PostMapping(value = "/sendungsSuche")
@@ -52,7 +46,6 @@ public class SendungsController {
         model.addAttribute("gefundeneSendung", gefundeneSendung);
 
         return "sendungsInfo";
-
     }
 
     /**
@@ -65,6 +58,4 @@ public class SendungsController {
 
         return "hilfe";
     }
-
-
 }
