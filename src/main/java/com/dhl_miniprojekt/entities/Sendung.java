@@ -23,7 +23,9 @@ public class Sendung {
     private LocalDate abgabedatum;
     private LocalDate lieferdatum;
 
+    @Transient
     private String formattiertesAbgabedatum;
+    @Transient
     private String formattiertesLieferdatum;
 
     @ManyToOne

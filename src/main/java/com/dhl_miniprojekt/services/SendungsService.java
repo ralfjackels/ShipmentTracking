@@ -32,10 +32,9 @@ public class SendungsService {
 
                 Optional<Sendung> optionalSendung = sendungsRepository.findById(sendung.getSendungNummer());
                 gefundeneSendung = optionalSendung.get();
+                formattiereDatum(gefundeneSendung);
             }
         }
-
-        formattiereDatum(gefundeneSendung);
 
         return gefundeneSendung;
     }
