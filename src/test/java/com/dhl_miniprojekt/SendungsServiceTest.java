@@ -58,7 +58,7 @@ public class SendungsServiceTest {
         // Ergebnis überprüfen
         Assert.assertNotNull(pruefeSendung);
         Assert.assertNotNull(pruefeSendung.getSendungNummer());
-        Assert.assertThat(pruefeSendung.getSendungNummer(), is(1));
+        Assert.assertThat(pruefeSendung.getSendungNummer(), is(Integer.parseInt(sendung.getVersandArt())));
     }
 
     /**
@@ -78,7 +78,7 @@ public class SendungsServiceTest {
         Sendung pruefeSendung = sendungsService.pruefeSendung(sendung);
 
         // Ergebnis überprüfen
-        Assert.assertThat(pruefeSendung.getSendungNummer(), is(1));
+        Assert.assertThat(pruefeSendung.getSendungNummer(), is(nullValue()));
     }
 
     /**
