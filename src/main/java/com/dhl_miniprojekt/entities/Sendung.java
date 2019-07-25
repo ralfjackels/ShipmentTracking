@@ -28,6 +28,19 @@ public class Sendung {
     @ManyToOne
     private Kunde empfaenger;
 
+    public Sendung() {
+    }
+
+    public Sendung(String versandArt, String lieferstatus, LocalDate abgabedatum, LocalDate lieferdatum,
+                   Kunde absender, Kunde empfaenger) {
+        this.versandArt = versandArt;
+        this.lieferstatus = lieferstatus;
+        this.abgabedatum = abgabedatum;
+        this.lieferdatum = lieferdatum;
+        this.absender = absender;
+        this.empfaenger = empfaenger;
+    }
+
     // Getter & Setter
     public LocalDate getAbgabedatum() {
         return abgabedatum;

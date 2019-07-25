@@ -32,6 +32,21 @@ public class Kunde {
     @OneToMany(mappedBy = "absender")
     private List<Sendung> absenderListe = new ArrayList<>();
 
+    public Kunde() {
+    }
+
+    public Kunde(String vorName, String nachName, String strasse, String hausNummer, String plz, String stadt,
+                 String land) {
+        this.vorName = vorName;
+        this.nachName = nachName;
+        this.strasse = strasse;
+        this.hausNummer = hausNummer;
+        this.plz = plz;
+        this.stadt = stadt;
+        this.land = land;
+
+    }
+
     // Getter & Setter
     public Integer getId() {
         return id;

@@ -17,7 +17,6 @@ public class SendungsService {
      * Prüft die Nutzereingabe. Über Thymeleaf wird absichtlich die Versandart eingegeben,
      * um die Nutzereingabe als String verarbeiten zu können.
      */
-
     public Sendung pruefeSendung(Sendung sendung){
 
         Sendung gefundeneSendung = new Sendung();
