@@ -18,6 +18,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 
 
 /**
@@ -57,7 +58,7 @@ public class SendungsServiceTest {
         // Ergebnis überprüfen
         Assert.assertNotNull(pruefeSendung);
         Assert.assertNotNull(pruefeSendung.getSendungNummer());
-        Assert.assertEquals(1, pruefeSendung.getSendungNummer().intValue());
+        Assert.assertThat(pruefeSendung.getSendungNummer(), is(1));
     }
 
     /**
@@ -77,7 +78,7 @@ public class SendungsServiceTest {
         Sendung pruefeSendung = sendungsService.pruefeSendung(sendung);
 
         // Ergebnis überprüfen
-        Assert.assertNull(pruefeSendung.getSendungNummer());
+        Assert.assertThat(pruefeSendung.getSendungNummer(), is(1));
     }
 
     /**
@@ -94,7 +95,7 @@ public class SendungsServiceTest {
         Sendung pruefeSendung = sendungsService.pruefeSendung(sendung);
 
         // Ergebnis überprüfen
-        Assert.assertNull(pruefeSendung.getSendungNummer());
+        Assert.assertThat(pruefeSendung.getSendungNummer(), is(nullValue()));
     }
 
     /**
@@ -114,7 +115,5 @@ public class SendungsServiceTest {
 
         Assert.assertThat(sendung.getAbgabedatum().format(formatter), is("Donnerstag, 25. Juli 2019"));
         Assert.assertThat(sendung.getLieferdatum().format(formatter), is("Freitag, 26. Juli 2019"));
-
     }
-
 }
