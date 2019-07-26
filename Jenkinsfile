@@ -19,12 +19,19 @@ pipeline {
             steps {sh 'mvn test'}
         }
 
+        stage ('Deploy'){
+                    agend {label 'master'}
+
+                    steps {
+
+                        sh 'echo' "deploy from master"
+                    }
+                }
 
 
 
 
 
-        
 
 
     }
