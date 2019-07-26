@@ -16,6 +16,7 @@ import org.mockito.MockitoAnnotations;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 import java.util.Optional;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -107,15 +108,17 @@ public class SendungsServiceTest {
     public void pruefeDatumsFormattierung() {
         MockitoAnnotations.initMocks(this);
 
-        sendung.setVersandArt("1");
-        sendung.setAbgabedatum(LocalDate.of(2019, 7,25));
-        sendung.setLieferdatum(LocalDate.of(2019, 7,26));
+        LocalDate localDate1 = LocalDate.of(2019, 7,25);
+        LocalDate localDate2 = LocalDate.of(2019, 7,26);
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
+        sendung.setVersandArt("1");
+        sendung.setAbgabedatum(localDate1);
+        sendung.setLieferdatum(localDate2);
 
         sendungsService.formattiereDatum(sendung);
-
-        Assert.assertThat(sendung.getAbgabedatum().format(formatter), either(containsString("Donnerstag, 25. Juli 2019")).or(containsString("Thursday, 25. July 2019")));
-        Assert.assertThat(sendung.getLieferdatum().format(formatter), either(containsString("Freitag, 26. Juli 2019")).or(containsString("Friday, 26. July 2019")));
+        Assert.assertThat(sendung.getFormattiertesAbgabedatum(),
+                either(containsString("Donnerstag, 25. Juli 2019")).or(containsString("Thursday, 25. July 2019")));
+        Assert.assertThat(sendung.getFormattiertesLieferdatum(),
+                either(containsString("Freitag, 26. Juli 2019")).or(containsString("Friday, 26. July 2019")));
     }
 }
