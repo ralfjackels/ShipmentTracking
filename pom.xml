@@ -65,6 +65,7 @@
     </dependencies>
 
     <build>
+        <finalName>dhl_miniprojekt</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

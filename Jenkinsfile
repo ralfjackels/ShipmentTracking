@@ -1,6 +1,10 @@
 pipeline {
 
+<<<<<<<<< Temporary merge branch 1
+    agent any
+=========
     agent none
+>>>>>>>>> Temporary merge branch 2
 
         stages {
 
