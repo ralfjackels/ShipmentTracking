@@ -37,7 +37,7 @@ pipeline {
 
 
         stage ('Deploy'){
-            agend {label 'master'}
+            agent {label 'master'}
 
             steps {
 
