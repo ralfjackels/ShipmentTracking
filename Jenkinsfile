@@ -37,11 +37,11 @@ pipeline {
 
 
         stage ('Deploy'){
-            agend {label 'master'}
+            agent {label 'master'}
 
             steps {
 
-                sh 'echo "deploy from master"'
+            sh 'echo "deploy from master"'
             }
         }
 
