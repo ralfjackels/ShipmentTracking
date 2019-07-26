@@ -24,14 +24,6 @@ pipeline {
 
         }
 
-        stage ('Deploy'){
-                    agend {label 'master'}
-
-                    steps {
-
-                        sh 'echo' "deploy from master"
-                    }
-                }
 
         stage ('Test') {
             agent {
@@ -45,6 +37,17 @@ pipeline {
             }
 
         }
+
+
+        stage ('Deploy'){
+            agend {label 'master'}
+
+            steps {
+
+                sh 'echo' "deploy from master"
+            }
+        }
+
 
 
 
