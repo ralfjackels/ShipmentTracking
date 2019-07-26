@@ -8,7 +8,7 @@ pipeline {
 
             agent {
             docker {
-            image 'maven:3.6.1'
+            image 'maven:3.3.3'
             }
         }
 
