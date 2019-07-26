@@ -65,10 +65,14 @@
             <artifactId>postgresql</artifactId>
             <version>42.2.6</version>
         </dependency>
+
+
+
     </dependencies>
 
     <build>
         <finalName>dhl_miniprojekt</finalName>
+
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
