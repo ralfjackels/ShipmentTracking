@@ -5,7 +5,10 @@ import com.dhl_miniprojekt.repositories.SendungsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.NumberFormat;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+import java.util.Locale;
 import java.util.Optional;
 
 @Service
@@ -44,6 +47,9 @@ public class SendungsService {
      * Formattiert Lieferdatum und Abgabedatum für die Anzeige auf der Html
      */
     public void formattiereDatum(Sendung gefundeneSendung) {
+
+
+
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
 
