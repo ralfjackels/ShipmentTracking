@@ -1,6 +1,6 @@
 pipeline {
 
-    agent any
+    agent none
 
         stages {
 
@@ -10,6 +10,7 @@ pipeline {
 
             steps {sh 'mvn -B -DskipTests=true clean package'}
         }
+
 
         stage('Test')    {
 

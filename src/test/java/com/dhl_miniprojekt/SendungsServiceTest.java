@@ -6,6 +6,7 @@ import com.dhl_miniprojekt.repositories.SendungsRepository;
 import com.dhl_miniprojekt.services.SendungsService;
 
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import org.mockito.InjectMocks;
@@ -101,6 +102,8 @@ public class SendungsServiceTest {
     /**
      * Dieser prüft ob das Datum richtig formattiert wurde.
      */
+
+    @Ignore
     @Test
     public void pruefeDatumsFormattierung() {
         MockitoAnnotations.initMocks(this);
