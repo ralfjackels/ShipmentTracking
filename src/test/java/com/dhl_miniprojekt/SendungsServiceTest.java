@@ -111,11 +111,11 @@ public class SendungsServiceTest {
         LocalDate localDate1 = LocalDate.of(2019, 7,25);
         LocalDate localDate2 = LocalDate.of(2019, 7,26);
 
-        sendung.setVersandArt("1");
         sendung.setAbgabedatum(localDate1);
         sendung.setLieferdatum(localDate2);
 
         sendungsService.formattiereDatum(sendung);
+
         Assert.assertThat(sendung.getFormattiertesAbgabedatum(),
                 either(containsString("Donnerstag, 25. Juli 2019")).or(containsString("Thursday, 25. July 2019")));
         Assert.assertThat(sendung.getFormattiertesLieferdatum(),
