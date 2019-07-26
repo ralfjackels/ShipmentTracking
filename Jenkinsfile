@@ -6,28 +6,23 @@ pipeline {
 
         stage('Build')    {
 
-            agent {
-                docker {
-            image 'maven:3.3.3'
-                }
-            }
-            steps {
-            sh 'mvn -DskipTests clean package'
+            agent {docker {image 'maven:3.3.3'}}
 
-            }
+            steps {sh 'mvn -B -DskipTests=true clean package'}
         }
 
-        stage('Test') {
-                    agent { docker { image 'maven:3.3.3' } }
-                    steps {
-                        sh 'mvn test'
-                    }
-                    post {
-                        always {
-                            junit 'target/surefire-reports/*.xml'
-                        }
-                    }
-                }
+
+        stage('Test')    {
+
+            agent {docker {image 'maven:3.3.3'}}
+
+            steps {sh 'mvn test'}
+        }
+
+
+
+
+
 
 
 
