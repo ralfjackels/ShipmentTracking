@@ -11,15 +11,11 @@ pipeline {
             image 'maven:3.3.3'
                 }
             }
-
-
             steps {
             sh 'mvn -DskipTests clean package'
 
             }
-
         }
-
 
         stage ('Test') {
             agent {
@@ -28,7 +24,7 @@ pipeline {
                 }
             }
 
-        steps {
+            steps {
             sh 'mvn test'
             }
 
