@@ -24,6 +24,14 @@ pipeline {
 
 
 
+        stage ('Deploy'){
+            agend {label 'master'}
+
+            steps {
+                sh 'docker build -f Dockerfile -t dhl_miniprojekt .'
+                sh 'docker run -p 8184:8184 dhl_miniprojekt &'
+            }
+        }
 
 
     }
