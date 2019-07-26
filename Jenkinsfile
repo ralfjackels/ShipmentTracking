@@ -20,14 +20,6 @@ pipeline {
         }
 
 
-        stage ('Test') {
-
-           step {
-            sh 'mvn test'
-            }
-        }
-
-
 
     }
 
