@@ -6,6 +6,13 @@ pipeline {
 
         stage('Build')    {
 
+            agent {
+                docker {
+                image 'maven:3.3.3'
+                }
+                }
+
+
             steps {
             sh 'mvn -B -DskipTests=true clean package'
 
