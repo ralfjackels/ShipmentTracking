@@ -41,7 +41,9 @@ pipeline {
 
             steps {
 
-            sh 'echo "deploy from master"'
+            sh 'echo "Jo"'
+
+
             }
         }
 
