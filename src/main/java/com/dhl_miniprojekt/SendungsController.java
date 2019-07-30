@@ -15,9 +15,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SendungsController {
 
+    private SendungsService sendungsService;
+
     @Autowired
-    SendungsService sendungsService;
-//    Für zukünftige Erweiterungen:
+    public SendungsController(SendungsService sendungsService) {
+        this.sendungsService = sendungsService;
+    }
+
+    //    Für zukünftige Erweiterungen:
 //    @Autowired
 //    private KundeRepository kundeRepository;
 

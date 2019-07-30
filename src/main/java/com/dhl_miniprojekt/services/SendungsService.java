@@ -14,8 +14,12 @@ import java.util.Optional;
 @Service
 public class SendungsService {
 
-    @Autowired
     private SendungsRepository sendungsRepository;
+
+    @Autowired
+    public SendungsService(SendungsRepository sendungsRepository) {
+        this.sendungsRepository = sendungsRepository;
+    }
 
     /**
      * Prüft die Nutzereingabe. Über Thymeleaf wird absichtlich die Versandart eingegeben,
@@ -40,16 +44,13 @@ public class SendungsService {
             }
         }
 
-        return gefundeneSendung;
+    return gefundeneSendung;
     }
 
     /**
      * Formattiert Lieferdatum und Abgabedatum für die Anzeige auf der Html
      */
     public void formattiereDatum(Sendung gefundeneSendung) {
-
-
-
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("EEEE, dd. MMMM yyyy");
 
