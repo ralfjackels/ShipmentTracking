@@ -3,13 +3,11 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <!-- Required meta tags -->
-    <title>Hilfe</title>
+    <title>help</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" href="7P.ico" type="image/x-icon">
-    <!--  Google Fonts > Schriftart Roboto-->
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
     <!-- Bootstrap CSS -->
@@ -40,10 +38,11 @@
         </div>
 
 
-        <div th:action="@{/hilfe}">
-            <h4  class="text-center text-uppercase fontSizeBigRJ fontColorRJ">Wir helfen gerne</h4>
-            <p color="white" class="text-center w-75 m-auto fontSizeMiddleRJ fontColorRJ" >Wenn Sie Probleme bei der Sendungssuche haben, <br> kontaktieren Sie uns auf
-                folgenden Wegen</p>
+        <div th:action="@{/help}">
+            <h4  class="text-center text-uppercase fontSizeBigRJ fontColorRJ">we are pleased to help</h4>
+            <p color="white" class="text-center w-75 m-auto fontSizeMiddleRJ fontColorRJ"
+            >if you have problems finding a shipment, <br>
+                please contact us in the following ways</p>
             <div class="row">
 
 
@@ -71,25 +70,25 @@
                 </div>
 
 
-                <!--                VOR ORT-->
+                <!--                LOCAL-->
                 <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                     <div class="card border-0">
                         <div class="card-body text-center">
                             <i class="fa fa-map-marker fa-5x mb-3" aria-hidden="true"></i>
-                            <h4 class="text-uppercase mb-5">Filiale vor Ort</h4>
-                            <address>Ums Eck 23, 50667 Köln</address>
+                            <h4 class="text-uppercase mb-5">local branch</h4>
+                            <address>Next Door 23, 50667 Köln</address>
                         </div>
                     </div>
                 </div>
 
 
-                <!--                NEUE SUCHE-->
+                <!--                NEW SERACH-->
                 <div class="col-sm-12 col-md-6 col-lg-3 my-5">
                     <div class="card border-0">
                         <div class="card-body text-center">
                             <i class="fa fa-search fa-5x mb-3" aria-hidden="true"></i>
                             <h4 class="text-uppercase mb-5">Neue Suche</h4>
-                            <address><a th:href="@{/}" style="color:#444037">Link zur Sendungssuche</a></address>
+                            <address><a th:href="@{/}" style="color:#444037">Go to a new tracking info</a></address>
                         </div>
                     </div>
                 </div>

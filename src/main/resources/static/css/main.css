@@ -1,8 +1,3 @@
-
-
-/* Sendungssuche*/
-
-
 .gapBetweenRJ {
   margin-left: 20px;
   text-align: center;
@@ -660,7 +655,7 @@ legend {
 
 
 body{
-  background: url(../image/paket.jpg) no-repeat center center fixed;
+  background: url(../image/background.jpg) no-repeat center center fixed;
   background-size: cover;
 
 }
