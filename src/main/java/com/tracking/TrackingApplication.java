@@ -31,30 +31,30 @@ public class TrackingApplication {
     public void fillDatabase() {
 
         Customer leeKoer = new Customer("Lee", "Kör", "Liefergasse", "1", "40213",
-                "Düsseldorf", "Deutschland");
+                "Düsseldorf", "Germany");
 
         Customer bobFahrer = new Customer("Bob", "Fahrer", "Große Elbstraße", "135", "22767",
-                "Hamburg", "Deutschland");
+                "Hamburg", "Germany");
 
         Customer heinBloed = new Customer("Hein", "Blöd", "Emilienstraße", "20", "01139",
-                "Dresden", "Deutschland");
+                "Dresden", "Germany");
 
         Customer annaBude = new Customer("Anna", "Bude", "Friesenstraße", "29", "19059",
-                "Schwerin", "Deutschland");
+                "Schwerin", "Germany");
 
         Customer reinerZufall = new Customer("Reiner", "Zufall", "Fraunhoferstraße", "42", "80469",
-                "München", "Deutschland");
+                "München", "Germany");
 
         Customer andiMauer = new Customer("Andi", "Mauer", "Zülpicher Str.", "9", "50674",
-                "Köln", "Deutschland");
+                "Köln", "Germany");
 
-        Shipment sendung1 = new Shipment("Standard", "Abgegeben", LocalDate.now(),
+        Shipment sendung1 = new Shipment("Standard", "parcel deposited", LocalDate.now(),
                 LocalDate.now().plusYears(15).plusDays(56), leeKoer, bobFahrer);
 
-        Shipment sendung2 = new Shipment("Express", "In Zustellung", LocalDate.now().minusDays(1),
+        Shipment sendung2 = new Shipment("Express", "in delivery", LocalDate.now().minusDays(1),
                 LocalDate.now(), heinBloed, annaBude);
 
-        Shipment sendung3 = new Shipment("Standard", "Zugestellt", LocalDate.now().minusYears(77),
+        Shipment sendung3 = new Shipment("Standard", "delivered", LocalDate.now().minusYears(77),
                 LocalDate.now().minusYears(5), reinerZufall, andiMauer);
 
         customerRepository.save(leeKoer);

@@ -39,8 +39,7 @@ public class ShipmentController {
      * Thymeleaf deliberately enters the shipping method in order to process the user input as a string.
      * @p shipment is created to store the entered transmission number.
      */
-    // ToDO
-    @PostMapping(value = "/findShipment")
+    @PostMapping(value = "/searchShipment")
     public String editInput(Model model, @ModelAttribute("newShipment") Shipment shipment) {
 
         Shipment foundShipment = shipmentService.verifyingShipment(shipment);

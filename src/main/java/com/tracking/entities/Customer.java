@@ -27,7 +27,6 @@ public class Customer {
     private String city;
     private String country;
 
-    // TODO
     @OneToMany(mappedBy = "addressee")
     private List<Shipment> listOfAddressee = new ArrayList<>();
 

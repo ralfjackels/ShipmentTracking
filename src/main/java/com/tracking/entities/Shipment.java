@@ -47,7 +47,6 @@ public class Shipment {
         this.addressee = addressee;
     }
 
-    // Getter & Setter
     public LocalDate getSubmissionDate() {
         return submissionDate;
     }
