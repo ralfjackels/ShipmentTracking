@@ -44,7 +44,7 @@ public class ShipmentService {
     }
 
     /**
-     * Formatted delivery date and delivery date for display on the html
+     * Formatted submission date and delivery date for display on the html
      */
     public void formatDate(Shipment foundShipment) {
 
