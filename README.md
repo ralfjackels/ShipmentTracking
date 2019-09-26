@@ -24,6 +24,6 @@ Spring MVC
 JUnit & Mocking 
 
 ## Authors
-Laura Lewinski
-Martin Terens
+Laura Lewinski <br>
+Martin Terens <br>
 Ralf Jackels
