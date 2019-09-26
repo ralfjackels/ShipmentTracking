@@ -22,3 +22,8 @@ Java
 SpringBoot
 Spring MVC
 JUnit & Mocking 
+
+## Authors
+Laura Lewinski
+Martin Terens
+Ralf Jackels
