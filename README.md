@@ -6,24 +6,25 @@ Only a consignment number is required for the query. The user gets information a
 - Delivery Status (Placed shipment, in delivery, delivered)
 - Delivery type (Express or Standard)
 - Shipping and delivery address
-- help 
+- Help 
 
 
 ## What do you need to run the application
 
-Development environment <br>
-relational database MariaDB <br>
-Webbrowser
+- Development environment
+- Relational database MariaDB
+- Webbrowser
 
 
 ## Technologies
 
-Java 
-SpringBoot
-Spring MVC
-JUnit & Mocking 
+- Java 
+- Maven Dependency Management 
+- SpringBoot
+- Spring MVC
+- JUnit & Mocking 
 
 ## Authors
-Laura Lewinski <br>
-Martin Terens <br>
-Ralf Jackels
+- Laura Lewinski
+- Martin Terens
+- Ralf Jackels
