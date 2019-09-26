@@ -1,4 +1,4 @@
-package com.dhl_miniprojekt;
+package com.tracking;
 
 
 import com.tracking.entities.Shipment;
@@ -22,7 +22,7 @@ import static org.hamcrest.CoreMatchers.*;
 /**
  * Logik in der SendungsService Klasse wird getestet.
  */
-public class SendungsServiceTest {
+public class ShipmentServiceTest {
 
     // Mock für simulierte Datenbankanbindung
     @Mock
