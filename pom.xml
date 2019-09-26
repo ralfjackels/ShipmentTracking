@@ -8,10 +8,10 @@
         <version>2.1.6.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.dhl_miniprojekt</groupId>
-    <artifactId>dhl_miniprojekt</artifactId>
+    <groupId>com.shipmentTracking</groupId>
+    <artifactId>shipmentTracking</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>dhl_miniprojekt</name>
+    <name>shipmentTracking</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
